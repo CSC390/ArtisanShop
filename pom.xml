@@ -11,9 +11,14 @@
 	<groupId>csc390</groupId>
 	<artifactId>artisanshop</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>artisanshop</name>
+    <packaging>pom</packaging>
+    <name>artisanshop</name>
 	<description>Artisan Shop </description>
-	<properties>
+    <modules>
+        <module>artisan-shop-app</module>
+		<module>artisan-shop-datasource</module>
+	</modules>
+    <properties>
 		<java.version>17</java.version>
 	</properties>
 	<dependencies>
