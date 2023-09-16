@@ -1,10 +1,12 @@
-package csc390.artisanshop.model;
+package csc394.artisanshop.model;
 
 import lombok.*;
+import org.springframework.stereotype.Component;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Component
 @Getter
 @Setter
 public class UserProfile {

@@ -1,20 +1,17 @@
-package csc390.artisanshop.controller;
+package csc394.artisanshop.controller;
 
-import csc390.artisanshop.model.DataProvider;
-import csc390.artisanshop.model.UserProfile;
+import csc394.artisanshop.model.DataProvider;
+import csc394.artisanshop.model.UserProfile;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/users")
+@AllArgsConstructor(onConstructor = @__(@Autowired))
 public class ArtisanShopController {
     private final DataProvider dataProvider;
-
-    @Autowired
-    public ArtisanShopController(final DataProvider dataProvider) {
-        this.dataProvider = dataProvider;
-    }
 
     @GetMapping("/{username}")
     public ResponseEntity<UserProfile> getUserProfile(@PathVariable String username) {
