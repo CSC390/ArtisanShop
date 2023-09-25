@@ -1,4 +1,4 @@
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 const SubscribeSection = () => {
   return (
@@ -18,12 +18,11 @@ const SubscribeSection = () => {
           <Form>
             <Form.Group className="my-2" controlId="email">
               <Form.Label>Email Address</Form.Label>
-              <Form.Control
-                type="email"
-                placeholder="Enter Email"
-                style={{ width: "100%" }}
-              />
+              <Form.Control type="email" placeholder="Enter Email" />
             </Form.Group>
+            <Button variant="primary" type="submit" className="mt-2">
+              Submit
+            </Button>
           </Form>
         </Col>
       </Row>

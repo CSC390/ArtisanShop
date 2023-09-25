@@ -1,10 +1,10 @@
 .carousel .carousel-inner .item-1 {
-  background-image: url("../assets/images/banner_1.jpeg");
+  background-image: url("../../assets/images/banner_1.jpeg");
   background-size: cover;
 }
 
 .carousel .carousel-inner .item-2 {
-  background-image: url("../assets/images/banner_2.jpeg");
+  background-image: url("../../assets/images/banner_2.jpeg");
   background-size: cover;
 }
 

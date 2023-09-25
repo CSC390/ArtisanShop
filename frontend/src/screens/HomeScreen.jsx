@@ -1,7 +1,8 @@
-import Categories from "../components/Categories";
-import ShopBar from "../components/ShopBar";
+import Categories from "../components/Sidebar/Categories";
+import ShopBar from "../components/Carousel/ShopBar";
 import FeaturedStart from "../components/FeaturedStart";
 import SubscribeSection from "../components/SubscribeSection";
+import HomeScreenProducts from "../components/HomeScreenProducts";
 
 const HomeScreen = () => {
   return (
@@ -11,7 +12,8 @@ const HomeScreen = () => {
           <Categories />
           <ShopBar />
           <FeaturedStart />
-          <SubscribeSection />
+          {/* <SubscribeSection /> */}
+          <HomeScreenProducts />
         </div>
       </div>
     </>

@@ -25,16 +25,8 @@ const ShopBar = () => {
           id="navbarCollapse"
           className="justify-content-between"
         >
-          <Nav className="mr-auto py-0">
-            <Nav.Link href="#" className="active">
-              Home
-            </Nav.Link>
-            <Nav.Link href="#">Shop</Nav.Link>
-            <Nav.Link href="#">Shop Detail</Nav.Link>
-            <NavDropdown title="Pages" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#">Shopping Cart</NavDropdown.Item>
-              <NavDropdown.Item href="#">Checkout</NavDropdown.Item>
-            </NavDropdown>
+          <Nav className="ms-auto">
+            <Nav.Link href="/cart">Shopping Cart</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

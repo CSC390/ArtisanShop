@@ -1,0 +1,29 @@
+/* scrollToTop.css */
+.toTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toTop.scrolled {
+  opacity: 1;
+  animation: bounce 2.6s infinite ease-in-out; /* Apply the slower bounce animation */
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0); /* Start and end at normal position */
+  }
+  25% {
+    transform: translateY(-10px); /* First bounce */
+  }
+  50% {
+    transform: translateY(0); /* Return to normal position */
+  }
+  75% {
+    transform: translateY(-5px); /* Second bounce */
+  }
+}

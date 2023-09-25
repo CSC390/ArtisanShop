@@ -1,17 +1,25 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Container, Form, Button, Row, Col, ToggleButton, ToggleButtonGroup } from "react-bootstrap";
+import {
+  Container,
+  Form,
+  Button,
+  Row,
+  Col,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import FormContainer from "../components/FormContainer";
+import FormContainer from "../../components/FormContainer";
 import { toast } from "react-toastify";
-import ToggleSwitch from "../components/ToggleSwitch";
+import ToggleSwitch from "../../components/ToggleSwitch";
 
-  const ProfileScreen = () => {
+const ProfileScreen = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [userType, setUserType] = useState('buyer'); // Default to 'buyer'
+  const [userType, setUserType] = useState("buyer"); // Default to 'buyer'
 
   const SubmitHandler = async (e) => {
     e.preventDefault();
@@ -81,15 +89,15 @@ import ToggleSwitch from "../components/ToggleSwitch";
                   </Form.Group>
 
                   {/* ToggleSwitch for Buyer */}
-                <Form.Group className="my-2">
-                  <Form.Label>User Type</Form.Label>
-                  <ToggleSwitch label="Buyer" />
-                </Form.Group>
+                  <Form.Group className="my-2">
+                    <Form.Label>User Type</Form.Label>
+                    <ToggleSwitch label="Buyer" />
+                  </Form.Group>
 
-                {/* ToggleSwitch for Seller */}
-                <Form.Group className="my-2">
-                  <ToggleSwitch label="Seller" />
-                </Form.Group>
+                  {/* ToggleSwitch for Seller */}
+                  <Form.Group className="my-2">
+                    <ToggleSwitch label="Seller" />
+                  </Form.Group>
 
                   <Button type="submit" variant="primary" className="mt-2">
                     Update
