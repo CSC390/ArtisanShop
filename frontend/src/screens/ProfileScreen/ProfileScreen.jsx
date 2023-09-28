@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../../components/FormContainer";
 import { toast } from "react-toastify";
-import ToggleSwitch from "../../components/ToggleSwitch";
+import ToggleSwitch from "../../components/ToggleSwitch/ToggleSwitch";
 
 const ProfileScreen = () => {
   const [name, setName] = useState("");

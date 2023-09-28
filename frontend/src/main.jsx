@@ -10,18 +10,20 @@ import {
 import store from "./utils/store";
 import { Provider } from "react-redux";
 import App from "./App.jsx";
-import HomeScreen from "./screens/HomeScreen.jsx";
 import Footer from "./components/Footer/Footer";
-import ProfileScreen from "./screens/ProfileScreen/ProfileScreen.jsx";
-import RegisterScreen from "./screens/RegisterScreen/RegisterScreen.jsx";
-import LoginScreen from "./screens/LoginScreen/LoginScreen";
-import PrivateRoute from "./components/PrivateRoute.jsx";
-import ShoppingCart from "./screens/CartPage/ShoppingCart";
-import HomeScreenProducts from "./components/HomeScreenProducts";
-import ProductSinglePage from "./screens/ProductSinglePage/ProductSinglePage";
+import PrivateRoute from "./routers/PrivateRoute.jsx";
+import HomeScreenProducts from "./components/ProductsHome/HomeScreenProducts";
 import ScrollButton from "./components/ScrollToTop/scrollToTop";
-import CategoryProduct from "./screens/CategoryProductPage/CategoryProductPage";
-import Error from "./screens/error/NotFoundPage";
+import {
+  HomeScreen,
+  ProfileScreen,
+  RegisterScreen,
+  LoginScreen,
+  ShoppingCart,
+  CategoryProduct,
+  ProductSinglePage,
+  Error,
+} from "./screens/index";
 
 const router = createBrowserRouter(
   createRoutesFromElements(

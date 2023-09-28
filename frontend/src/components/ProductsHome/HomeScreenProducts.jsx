@@ -1,17 +1,17 @@
 import React, { useEffect } from "react";
 import "./HomeScreen.css";
-import "../App.css";
+import "../../App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import ProductList from "./productList/productList";
+import ProductList from "../productList/productList";
 import {
   fetchAsyncProducts,
   getAllProducts,
   getAllProductsStatus,
-} from "../slices/productSlice";
-import { getAllCategories } from "../slices/categorySlice";
-import Loader from "./Loader";
-import { STATUS } from "../utils/status";
+} from "../../slices/productSlice";
+import { getAllCategories } from "../../slices/categorySlice";
+import Loader from "../Loader";
+import { STATUS } from "../../utils/status";
 
 const HomeScreenProducts = () => {
   const dispatch = useDispatch();
