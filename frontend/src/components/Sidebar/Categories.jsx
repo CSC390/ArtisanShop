@@ -5,11 +5,11 @@ import {
   getSidebarStatus,
   setSidebarOn,
   setSidebarOff,
-} from "../../slices/sidebarSlice";
+} from "../../reducers/sidebarSlice";
 import {
   fetchAsyncCategories,
   getAllCategories,
-} from "../../slices/categorySlice";
+} from "../../reducers/categorySlice";
 
 const Categories = () => {
   const dispatch = useDispatch();

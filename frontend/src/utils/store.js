@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit"
-import authReducer from '../slices/authSlice'
-import { apiSlice } from "../slices/apiSlice";
-import productReducer from "../slices/productSlice";
-import categoryReducer from "../slices/categorySlice";
-import cartReducer from "../slices/cartSlice";
-import sidebarReducer from "../slices/sidebarSlice";
+import authReducer from '../reducers/authReducer'
+import { apiSlice } from "../reducers/apiSlice";
+import productReducer from "../reducers/productReducer";
+import categoryReducer from "../reducers/categorySlice";
+import basketReducer from "../reducers/basketReducer";
+import sidebarReducer from "../reducers/sidebarSlice";
 
 
 const store = configureStore({
@@ -13,9 +13,6 @@ const store = configureStore({
         [apiSlice.reducerPath]: apiSlice.reducer,
         sidebar: sidebarReducer,
         category: categoryReducer,
-        product: productReducer,
-        cart: cartReducer
-
     },
     middleware: (getDefaultMiddlerware) => getDefaultMiddlerware().concat(apiSlice.middleware),
     devTools: true

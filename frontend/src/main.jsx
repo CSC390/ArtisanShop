@@ -7,8 +7,6 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import store from "./utils/store";
-import { Provider } from "react-redux";
 import App from "./App.jsx";
 import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./routers/PrivateRoute.jsx";
@@ -31,12 +29,11 @@ const router = createBrowserRouter(
       <Route index={true} path="/" element={<HomeScreen />} />
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
-      <Route path="/cart" element={<ShoppingCart />} />
-      {/* single product route */}
-      <Route path="/product/:id" element={<ProductSinglePage />} />
-      {/* category wise product listing route */}
-      <Route path="/category/:category" element={<CategoryProduct />} />
-      <Route path="/test" element={<HomeScreenProducts />} />
+      <Route
+        path="category/:categoryKey"
+        element={<ViewCategoryProductList />}
+      />
+      <Route path="products/:id" element={<ViewProductSingle />} />
       <Route path="error" element={<Error />} />
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
@@ -46,11 +43,11 @@ const router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
       <RouterProvider router={router} />
       <ScrollButton />
       <Footer />
-    </React.StrictMode>
-  </Provider>
+    </Provider>
+  </React.StrictMode>
 );

@@ -4,8 +4,8 @@ import { Container, Form, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import FormContainer from "../../components/FormContainer";
 import "./LoginScreen.css";
-import { useLoginMutation } from "../../slices/usersApiSlice";
-import { setCredentials } from "../../slices/authSlice";
+import { useLoginMutation } from "../../reducers/usersApiSlice";
+import { setCredentials } from "../../reducers/authReducer";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
 

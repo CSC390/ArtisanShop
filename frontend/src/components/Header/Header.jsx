@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { FaHome, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
-import { useLogoutMutation } from "../../slices/usersApiSlice";
-import { clearCredentials } from "../../slices/authSlice";
+import { useLogoutMutation } from "../../reducers/usersApiSlice";
+import { clearCredentials } from "../../reducers/authReducer";
 import "./Header.css";
 
 const Header = () => {

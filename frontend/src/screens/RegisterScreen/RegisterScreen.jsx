@@ -6,8 +6,8 @@ import "../LoginScreen/LoginScreen.css";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import Loader from "../../components/Loader";
-import { useRegisterMutation } from "../../slices/usersApiSlice";
-import { setCredentials } from "../../slices/authSlice";
+import { useRegisterMutation } from "../../reducers/usersApiSlice";
+import { setCredentials } from "../../reducers/authReducer";
 
 const RegisterScreen = () => {
   const [name, setName] = useState("");

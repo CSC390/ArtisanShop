@@ -2,7 +2,7 @@ import Categories from "../../components/Sidebar/Categories";
 import ShopBar from "../../components/Carousel/ShopBar";
 import FeaturedStart from "../../components/ServicesBanner/FeaturedStart";
 import SubscribeSection from "../../components/NewsletterBanner/SubscribeSection";
-import HomeScreenProducts from "../../components/ProductsHome/HomeScreenProducts";
+import HomePage from "../home/HomePage";
 
 const HomeScreen = () => {
   return (
@@ -13,7 +13,7 @@ const HomeScreen = () => {
           <ShopBar />
           <FeaturedStart />
           {/* <SubscribeSection /> */}
-          <HomeScreenProducts />
+          <HomePage />
         </div>
       </div>
     </>
