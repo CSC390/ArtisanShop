@@ -8,19 +8,19 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import App from "./App.jsx";
+import store from "../src/utils/store.js";
+import { Provider } from "react-redux";
 import Footer from "./components/Footer/Footer";
 import PrivateRoute from "./routers/PrivateRoute.jsx";
-import HomeScreenProducts from "./components/ProductsHome/HomeScreenProducts";
 import ScrollButton from "./components/ScrollToTop/scrollToTop";
 import {
   HomeScreen,
   ProfileScreen,
   RegisterScreen,
   LoginScreen,
-  ShoppingCart,
-  CategoryProduct,
-  ProductSinglePage,
   Error,
+  ViewCategoryProductList,
+  ViewProductSingle,
 } from "./screens/index";
 
 const router = createBrowserRouter(
