@@ -28,6 +28,7 @@
 
 html {
   font-size: 12px;
+  background-color: var(--clr-whitesmoke);
 }
 
 body {
@@ -35,6 +36,7 @@ body {
   line-height: 1.6;
   font-family: var(--font-family-opensans);
   color: var(--clr-black);
+  background-color: var(--clr-whitesmoke);
 }
 
 ul {
@@ -44,6 +46,10 @@ ul {
 a {
   text-decoration: none;
   color: unset;
+}
+
+p {
+  margin: 0;
 }
 
 h1,
@@ -532,10 +538,16 @@ select {
   }
 }
 
+.btn-primary :hover {
+  background-color: var(--clr-yellow);
+  color: var(--clr-secondary);
+}
+
 /* forms */
 .form-control {
   padding: 10px 10px;
   width: 100%;
+  appearance: auto;
 }
 
 .form-control::placeholder {

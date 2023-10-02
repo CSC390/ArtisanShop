@@ -12,9 +12,9 @@ const HomeScreen = () => {
           <Categories />
           <ShopBar />
           <FeaturedStart />
-          {/* <SubscribeSection /> */}
-          <HomePage />
         </div>
+        <HomePage />
+        <SubscribeSection />
       </div>
     </>
   );

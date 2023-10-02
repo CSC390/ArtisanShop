@@ -49,7 +49,7 @@ export const fetchAsyncCategories = createAsyncThunk('categories/fetch', async (
 
 
     // Limit the result to, for example, the first 5 categories
-    const limitedData = data.slice(0, 11); // Adjust the range as needed
+    const limitedData = data.slice(0, 12); // Adjust the range as needed
 
     return limitedData;
 });

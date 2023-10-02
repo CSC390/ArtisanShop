@@ -13,9 +13,9 @@ const HomePage = () => {
   console.log(filtered_products);
 
   return (
-    <main className="">
+    <main className="bg-whitesmoke">
       <section className="sc-wrapper py-5">
-        <Title title={"Our Products"} />
+        <Title title={"All Our Products"} />
         {productsLoading ? (
           <Loader />
         ) : (

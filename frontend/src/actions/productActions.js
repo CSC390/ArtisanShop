@@ -7,7 +7,7 @@ export const getAllProducts = async (dispatch) => {
     });
 
     try {
-        const { data } = await axios.get("products?limit=5");
+        const { data } = await axios.get("products?limit=30");
         dispatch({
             type: actionType.GET_PRODUCTS_SUCCESS,
             payload: data.products

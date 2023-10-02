@@ -21,6 +21,7 @@ import {
   Error,
   ViewCategoryProductList,
   ViewProductSingle,
+  Basket,
 } from "./screens/index";
 
 const router = createBrowserRouter(
@@ -30,13 +31,14 @@ const router = createBrowserRouter(
       <Route path="/login" element={<LoginScreen />} />
       <Route path="/register" element={<RegisterScreen />} />
       <Route
-        path="category/:categoryKey"
+        path="/category/:categoryKey" // Add leading slash here
         element={<ViewCategoryProductList />}
       />
-      <Route path="products/:id" element={<ViewProductSingle />} />
-      <Route path="error" element={<Error />} />
+      <Route path="/products/:id" element={<ViewProductSingle />} />
+      <Route path="/error" element={<Error />} />
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
+        <Route path="/cart" element={<Basket />} />
       </Route>
     </Route>
   )

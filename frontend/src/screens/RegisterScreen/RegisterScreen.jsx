@@ -50,7 +50,7 @@ const RegisterScreen = () => {
         <Row className="justify-content-center align-items-center h-100">
           <Col xs={12} sm={10} md={8} lg={12}>
             <FormContainer>
-              <h1>Sign Up</h1>
+              <h1 className="text-center">Sign Up</h1>
               <Form onSubmit={SubmitHandler}>
                 <Form.Group className="my-2" controlId="name">
                   <Form.Label>Name</Form.Label>
@@ -98,14 +98,23 @@ const RegisterScreen = () => {
 
                 {isLoading && <Loader />}
 
-                <Button type="submit" variant="primary" className="mt-2">
+                <Button
+                  type="submit"
+                  variant="secondary"
+                  className="mt-4 fs-16"
+                >
                   Sign Up
                 </Button>
 
-                <Row className="py-3">
-                  <Col>
-                    Already Have an Account? <Link to="/Login">Login</Link>
-                  </Col>
+                <Row className="pt-5">
+                  <Col className="pb-4">Already Have an Account?</Col>
+                  <a
+                    className="fs-16 btn btn-success"
+                    href="/login"
+                    role="button"
+                  >
+                    Login
+                  </a>
                 </Row>
               </Form>
             </FormContainer>

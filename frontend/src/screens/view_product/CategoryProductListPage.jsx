@@ -14,7 +14,7 @@ const CategoryProductListPage = () => {
   }, [categoryKey]);
 
   return (
-    <main className="">
+    <main className="bg-whitesmoke">
       <div className="container">
         <div className="sc-wrapper py-5">
           <Title title={categoryKey} />

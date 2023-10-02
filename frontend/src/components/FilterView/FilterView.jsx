@@ -29,9 +29,9 @@ const FilterView = () => {
       <div className="container">
         <div className="filter-top-content py-3 flex align-center justify-between bg-white px-3">
           <div className="filter-top-sort flex align-center">
-            <p className="fs-13 text-dark">Sort By:</p>
+            <p className="fs-15 text-dark">Sort By:</p>
             <select
-              className="fs-13 mx-2 filter-select"
+              className="fs-153 mx-2 filter-select"
               onChange={(event) =>
                 priceSort(filterDispatch, event.target.value)
               }
@@ -47,7 +47,7 @@ const FilterView = () => {
             </select>
           </div>
           <div className="filter-top-view flex align-center ">
-            <p className="op-07 text-dark fs-13">View: </p>
+            <p className="op-07 text-dark fs-15">View: </p>
             <button
               type="button"
               className="grid-btn"

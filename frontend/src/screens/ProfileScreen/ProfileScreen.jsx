@@ -41,8 +41,8 @@ const ProfileScreen = () => {
         <Row className="justify-content-center align-items-center h-100">
           <Col xs={12} sm={10} md={8} lg={12}>
             <div>
-              <h1>My Profile</h1>
               <FormContainer>
+                <h1 className="text-center">My Profile</h1>
                 <Form onSubmit={SubmitHandler}>
                   <Form.Group className="my-2" controlId="name">
                     <Form.Label>Name</Form.Label>
@@ -87,18 +87,6 @@ const ProfileScreen = () => {
                       style={{ width: "100%" }}
                     />
                   </Form.Group>
-
-                  {/* ToggleSwitch for Buyer */}
-                  <Form.Group className="my-2">
-                    <Form.Label>User Type</Form.Label>
-                    <ToggleSwitch label="Buyer" />
-                  </Form.Group>
-
-                  {/* ToggleSwitch for Seller */}
-                  <Form.Group className="my-2">
-                    <ToggleSwitch label="Seller" />
-                  </Form.Group>
-
                   <Button type="submit" variant="primary" className="mt-2">
                     Update
                   </Button>

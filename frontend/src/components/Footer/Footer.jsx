@@ -16,7 +16,9 @@ const Footer = () => {
       <Container className="footer-main">
         <Row>
           <Col lg={4} md={6} xs={12} className="business-hours-col">
-            <h3 className="col-title">Support Hotline Hours</h3>
+            <h3 className="col-title text-center pb-lg-3">
+              Support Hotline Hours
+            </h3>
             <div className="intro">
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean
               commodo ligula.
@@ -35,7 +37,7 @@ const Footer = () => {
           </Col>
 
           <Col lg={4} md={6} xs={12} className="contact-us-col">
-            <h3 className="col-title">Contact Us</h3>
+            <h3 className="col-title text-center pb-lg-3">Contact Us</h3>
             <ul className="footer-contact-list list-unstyled">
               <li className="item">
                 <span>
@@ -57,7 +59,7 @@ const Footer = () => {
           </Col>
 
           <Col lg={4} xs={12} className="follow-us-col">
-            <h3 className="col-title">About Us</h3>
+            <h3 className="col-title text-center pb-lg-3">About Us</h3>
             <div className="intro">
               Web-based platform designed to connect artisans with potential
               buyers. The goal of this platform is to provide artisans a space
@@ -67,22 +69,22 @@ const Footer = () => {
             <div className="social-container">
               <ul className="list-inline social-list">
                 <li className="list-inline-item social-item">
-                  <a href="#">
+                  <a href="#http://csc394-blue-frogs-hub.s3-website-us-east-1.amazonaws.com/">
                     <FaInstagram />
                   </a>
                 </li>
                 <li className="list-inline-item social-item">
-                  <a href="#">
+                  <a href="http://csc394-blue-frogs-hub.s3-website-us-east-1.amazonaws.com/">
                     <FaGithub />
                   </a>
                 </li>
                 <li className="list-inline-item social-item">
-                  <a href="#">
+                  <a href="http://csc394-blue-frogs-hub.s3-website-us-east-1.amazonaws.com/">
                     <FaTwitter />
                   </a>
                 </li>
                 <li className="list-inline-item social-item">
-                  <a href="#">
+                  <a href="http://csc394-blue-frogs-hub.s3-website-us-east-1.amazonaws.com/">
                     <FaFacebook />
                   </a>
                 </li>
@@ -103,7 +105,10 @@ const Footer = () => {
       <div className="bottombar text-center">
         <div className="copyright">
           Company @
-          <a href="#" target="_blank">
+          <a
+            href="#http://csc394-blue-frogs-hub.s3-website-us-east-1.amazonaws.com/"
+            target="_blank"
+          >
             Artisan Marketplace
           </a>
         </div>

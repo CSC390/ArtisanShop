@@ -1,14 +1,14 @@
 @import "../App.css";
 
 .products .product-list .product-item {
-  background-color: #fff;
+  background-color: var(--clr-white);
   overflow: hidden;
   border-radius: 6px;
   box-shadow: rgba(99, 99, 99, 0.06) 0px 2px 8px 0px;
 }
 
 .products .product-list .product-item:hover {
-  outline: 2px solid lighten(#ffa40c, 10%);
+  outline: 2px solid lighten(var(--clr-yellow), 10%);
   outline-offset: 1px;
 }
 
@@ -22,8 +22,8 @@
   position: absolute;
   top: 10px;
   right: 0;
-  background-color: #ffa40c;
-  color: #fff;
+  background-color: var(--clr-yellow);
+  color: var(--clr-white);
   font-size: 11px;
   padding: 0 6px;
   border-top-left-radius: 2px;
@@ -43,10 +43,10 @@
 
 .products .product-list .product-item-body .product-category {
   display: inline-block;
-  background-color: #cf363b;
+  background-color: var(--clr-primary);
   font-size: 11px;
   text-transform: capitalize;
-  color: #fff;
+  color: var(--clr-white);
   border-radius: 3px;
   padding: 1px 6px;
   margin-right: 8px;
@@ -65,7 +65,7 @@
 .products .product-list .product-item-body .product-price span:first-child {
   margin-right: 6px;
   font-weight: 700;
-  color: #ffa40c;
+  color: var(--clr-yellow);
   display: block;
   margin-bottom: 6px;
   position: relative;
@@ -127,16 +127,12 @@
   .products .product-list.listview .product-item {
     grid-template-columns: 180px auto;
   }
-}
 
-@media screen and (min-width: 678px) {
-  .products .product-list.listview .product-item .product-item-img {
+  .products .product-list.listview .product-item-img {
     height: 120px;
   }
-}
 
-@media screen and (min-width: 678px) {
-  .products .product-list.listview .product-item .product-item-body {
+  .products .product-list.listview .product-item-body {
     padding: 20px;
   }
 }

@@ -43,7 +43,7 @@ const LoginScreen = () => {
         <Row className="justify-content-center align-items-center h-100">
           <Col xs={12} sm={10} md={8} lg={12}>
             <FormContainer>
-              <h1>Sign In</h1>
+              <h1 className="text-center">Sign In</h1>
               <Form onSubmit={SubmitHandler}>
                 <Form.Group className="my-2" controlId="email">
                   <Form.Label>Email Address</Form.Label>
@@ -69,14 +69,18 @@ const LoginScreen = () => {
 
                 {isLoading && <Loader />}
 
-                <Button type="submit" variant="primary" className="mt-2">
+                <Button type="submit" variant="success" className="fs-16 mt-5">
                   Sign In
                 </Button>
-
-                <Row className="py-3">
-                  <Col>
-                    New Customer? <Link to="/register">Register</Link>
-                  </Col>
+                <Row className="pt-5">
+                  <Col className="pb-4">New Customer?</Col>
+                  <a
+                    className="fs-16 btn btn-secondary"
+                    href="/register"
+                    role="button"
+                  >
+                    Register
+                  </a>
                 </Row>
               </Form>
             </FormContainer>
@@ -88,3 +92,10 @@ const LoginScreen = () => {
 };
 
 export default LoginScreen;
+
+<Row className="pt-5">
+  <Col className="pb-4">New Customer?</Col>
+  <Button type="submit" variant="secondary" className="fs-16">
+    Login
+  </Button>
+</Row>;

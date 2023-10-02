@@ -1,4 +1,5 @@
 export { default as HomeScreen } from "./HomeScreenSkeleton/HomeScreen";
+export { default as Basket } from "./basket/BasketPage";
 export { default as Error } from "./error/NotFoundPage";
 export { default as LoginScreen } from "./LoginScreen/LoginScreen";
 export { default as ProfileScreen } from "./ProfileScreen/ProfileScreen";

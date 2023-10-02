@@ -72,7 +72,7 @@ const ProductSinglePage = () => {
   };
 
   return (
-    <main className="bg-secondary">
+    <main className="bg-whitesmoke">
       <SupportHeader />
       {/* shopping basket alert */}
       <div className={`basket-alert ${basketMsgStatus ? "show" : ""}`}>
@@ -92,13 +92,10 @@ const ProductSinglePage = () => {
             >
               <MdCancel size={22} className="text-dark" />
             </button>
-            <Link
-              to="/basket"
-              className="alert-btn fs-13 text-white bg-primary"
-            >
+            <Link to="/cart" className="alert-btn fs-13 text-white bg-primary">
               View Shopping Cart
             </Link>
-            <Link to="/home" className="alert-btn fs-13 text-primary">
+            <Link to="/" className="alert-btn fs-13 text-primary">
               Continue Shopping
             </Link>
           </div>
@@ -216,7 +213,7 @@ const ProductSinglePage = () => {
                     Add to Cart
                   </button>
                 ) : (
-                  <Link to="login" className="add-to-cart-btn shop-btn fs-14">
+                  <Link to="/login" className="add-to-cart-btn shop-btn fs-14">
                     Add to Cart
                   </Link>
                 )}

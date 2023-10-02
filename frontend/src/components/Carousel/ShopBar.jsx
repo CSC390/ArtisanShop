@@ -6,16 +6,17 @@ import {
   NavDropdown,
   Carousel,
 } from "react-bootstrap";
+import { FaCartPlus, FaMoon } from "react-icons/fa";
 import "./ShopBar.css";
 
 const ShopBar = () => {
   return (
     <Col lg={9}>
-      <Navbar bg="light" variant="light" className="py-3 py-lg-0 px-0">
+      <Navbar bg="light" variant="light" className="py-3 py-lg-0 px-0 mb-3">
         <Navbar.Brand href="#">
           <h1 className="m-0 display-4 font-weight-semi-bold">
-            <span className="text-primary font-weight-bold border px-3 mr-1">
-              !
+            <span className="text-primary font-weight-bold border px-2 m-1">
+              <FaMoon />
             </span>
             Artisan Marketplace
           </h1>
@@ -26,7 +27,10 @@ const ShopBar = () => {
           className="justify-content-between"
         >
           <Nav className="ms-auto">
-            <Nav.Link href="/cart">Shopping Cart</Nav.Link>
+            <Nav.Link href="/cart">
+              <FaCartPlus />
+              Shopping Cart
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Navbar>

@@ -44,7 +44,7 @@ const Categories = () => {
       </Button>
       <Accordion id="categories-collapse" activeKey={isSidebarOn ? "0" : ""}>
         <Accordion.Collapse eventKey="0">
-          <div>
+          <div className="text-capitalize">
             <ListGroup>
               {categories.map((category, idx) => {
                 return (
