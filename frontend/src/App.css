@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&display=swap");
 
-/* Variables */
+/* variables */
 :root {
   --clr-primary: #cf363b;
   --clr-secondary: #f8f8f8;
@@ -12,11 +12,11 @@
   --clr-lime: #9dcc00;
   --clr-dark-grey: #333333;
   --clr-danger: #dc3545;
-  --transition-default: #fff;
+  --transition-default: all 300ms ease-in-out;
   --font-family-opensans: "Open Sans", sans-serif;
 }
 
-/* Global styles & resets */
+/* global styles & resets */
 *,
 *::after,
 *::before {
@@ -27,7 +27,7 @@
 }
 
 html {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 body {
@@ -85,14 +85,14 @@ select {
   font-size: 1.6rem;
 }
 
-/* Custom utility classes */
+/* custom utility classes */
 .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 2rem;
 }
 
-/* Flexbox and Grid */
+/* flexbox and grid */
 .flex {
   display: flex;
 }
@@ -141,7 +141,7 @@ select {
   display: grid;
 }
 
-/* Height and Width */
+/* height and width */
 .h-100 {
   height: 100%;
 }
@@ -150,7 +150,7 @@ select {
   width: 100%;
 }
 
-/* Text Align and Transformation */
+/* text align and transformation */
 .text-center {
   text-align: center;
 }
@@ -211,7 +211,7 @@ select {
   color: var(--clr-danger);
 }
 
-/* Background Colors */
+/* background colors */
 .bg-white {
   background-color: var(--clr-white);
 }
@@ -240,12 +240,7 @@ select {
   background-color: var(--clr-dark);
 }
 
-/* Font */
-.font-opensans {
-  font-family: var(--font-family-opensans);
-}
-
-/* Font Weights */
+/* font weights */
 .fw-1 {
   font-weight: 100;
 }
@@ -282,7 +277,7 @@ select {
   font-weight: 900;
 }
 
-/* Common Font Sizes */
+/* common font sizes */
 .fs-11 {
   font-size: 11px;
 }
@@ -347,7 +342,7 @@ select {
   font-size: 26px;
 }
 
-/* Letter Spacing */
+/* letter spacing */
 .ls-1 {
   letter-spacing: 1px;
 }
@@ -364,7 +359,7 @@ select {
   letter-spacing: 1.5px;
 }
 
-/* Margin and Padding */
+/* margin and padding */
 .mx-auto {
   margin-right: auto;
   margin-left: auto;
@@ -500,7 +495,7 @@ select {
   margin-right: 60px;
 }
 
-/* Section */
+/* section */
 .main-holder {
   overflow-x: hidden;
 }
@@ -509,7 +504,7 @@ select {
   white-space: nowrap;
 }
 
-/* Overflow */
+/* overflow */
 .overflow-x-hidden {
   overflow-x: hidden;
 }
@@ -530,14 +525,14 @@ select {
 
 .btn-primary {
   background-color: var(--clr-primary);
+
+  &:hover {
+    background-color: var(--clr-yellow);
+    color: var(--clr-secondary);
+  }
 }
 
-.btn-primary:hover {
-  background-color: var(--clr-yellow);
-  color: var(--clr-secondary);
-}
-
-/* Forms */
+/* forms */
 .form-control {
   padding: 10px 10px;
   width: 100%;
@@ -547,7 +542,7 @@ select {
   font-size: 14px;
 }
 
-/* Main */
+/* main */
 main {
   min-height: calc(100vh - 260px);
 }

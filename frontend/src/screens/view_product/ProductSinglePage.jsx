@@ -13,6 +13,7 @@ import {
 import { MdCancel } from "react-icons/md";
 import { ProductContext } from "../../context/productContext";
 import { BasketContext } from "../../context/basketContext";
+import SupportHeader from "../../components/SupportHeader/SupportHeader";
 
 const ProductSinglePage = () => {
   const { userInfo } = useSelector((state) => state.auth);
@@ -72,6 +73,7 @@ const ProductSinglePage = () => {
 
   return (
     <main className="bg-secondary">
+      <SupportHeader />
       {/* shopping basket alert */}
       <div className={`basket-alert ${basketMsgStatus ? "show" : ""}`}>
         <div className="alert-content">

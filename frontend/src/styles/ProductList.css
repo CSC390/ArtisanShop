@@ -1,3 +1,5 @@
+@import "../App.css";
+
 .products .product-list .product-item {
   background-color: #fff;
   overflow: hidden;

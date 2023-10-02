@@ -1,5 +1,5 @@
-import images from "../../utils/images";
 import "../../styles/HomePage.css";
+import "../../App.css";
 import { Title, ProductList, FilterView, Loader } from "../../components";
 import { ProductContext } from "../../context/productContext";
 import { FilterContext } from "../../context/filterContext";
@@ -13,13 +13,7 @@ const HomePage = () => {
   console.log(filtered_products);
 
   return (
-    <main className="bg-secondary">
-      <section className="sc-banner">
-        <div className="banner-item h-100 img-cover">
-          <img src={images.banner_1} alt="banner_image" className="img-cover" />
-        </div>
-      </section>
-
+    <main className="">
       <section className="sc-wrapper py-5">
         <Title title={"Our Products"} />
         {productsLoading ? (

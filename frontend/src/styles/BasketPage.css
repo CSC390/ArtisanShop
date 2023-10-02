@@ -1,3 +1,5 @@
+@import "../App.css";
+
 .checkbox-item {
   display: grid;
   grid-template-columns: 24px auto;

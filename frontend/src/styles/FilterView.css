@@ -1,30 +1,32 @@
+@import "../App.css";
+
 .filter-top {
   padding-top: 24px;
 }
 
-.filter-top .filter-top-content {
+.filter-top-content {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.filter-top .filter-top-content .filter-top-sort .filter-select {
+.filter-top-sort .filter-select {
   opacity: 0.9;
 }
 
-.filter-top .filter-top-content .filter-top-view {
+.filter-top-view {
   margin-left: 20px;
 }
 
-.filter-top .filter-top-content .filter-top-view p {
+.filter-top-view p {
   margin-bottom: 3px;
 }
 
-.filter-top .filter-top-content .filter-top-view .grid-btn,
-.filter-top .filter-top-content .filter-top-view .list-btn {
+.filter-top-view .grid-btn,
+.filter-top-view .list-btn {
   margin-left: 8px;
-  transition: $transition-default;
+  transition: var(--transition-default);
 }
 
-.filter-top .filter-top-content .filter-top-view .grid-btn:hover,
-.filter-top .filter-top-content .filter-top-view .list-btn:hover {
-  color: $clr-dark;
+.filter-top-view .grid-btn:hover,
+.filter-top-view .list-btn:hover {
+  color: var(--clr-dark);
 }

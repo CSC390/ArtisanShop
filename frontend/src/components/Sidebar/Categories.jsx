@@ -37,7 +37,7 @@ const Categories = () => {
         onClick={toggleSidebar}
         style={{ height: "65px", marginTop: "-1px", padding: "0 30px" }}
       >
-        <h6 className="m-0">Categories</h6>
+        <h5 className="m-0">Categories</h5>
         <i
           className={`fa fa-angle-${isSidebarOn ? "up" : "down"} text-dark`}
         ></i>

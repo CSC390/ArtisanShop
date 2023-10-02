@@ -13,7 +13,7 @@ const ShopBar = () => {
     <Col lg={9}>
       <Navbar bg="light" variant="light" className="py-3 py-lg-0 px-0">
         <Navbar.Brand href="#">
-          <h1 className="m-0 display-5 font-weight-semi-bold">
+          <h1 className="m-0 display-4 font-weight-semi-bold">
             <span className="text-primary font-weight-bold border px-3 mr-1">
               !
             </span>

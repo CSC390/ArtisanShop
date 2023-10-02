@@ -2,7 +2,13 @@ import { Navbar, Nav, Container, NavDropdown } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
-import { FaHome, FaSignInAlt, FaSignOutAlt, FaUser } from "react-icons/fa";
+import {
+  FaHome,
+  FaSignInAlt,
+  FaSignOutAlt,
+  FaStore,
+  FaUser,
+} from "react-icons/fa";
 import { useLogoutMutation } from "../../reducers/usersApiSlice";
 import { clearCredentials } from "../../reducers/authReducer";
 import "./Header.css";
@@ -39,6 +45,12 @@ const Header = () => {
               </LinkContainer>
               {userInfo ? (
                 <>
+                  <LinkContainer to="/myshop">
+                    <Nav.Link>
+                      <FaStore /> My Shop
+                    </Nav.Link>
+                  </LinkContainer>
+
                   <LinkContainer to="/profile">
                     <Nav.Link>
                       <FaUser /> Profile
