@@ -58,7 +58,7 @@ const SupportHeader = () => {
                 </Link>
                 <div className="text-end basket-count">
                   <p className="text-uppercase fs-14">my cart</p>
-                  <Link to="/basket" className="fw-7">
+                  <Link to="/cart" className="fw-7">
                     $ &nbsp;
                     <span className="basket-amount">
                       {userInfo ? totalAmount : "0"}

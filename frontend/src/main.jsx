@@ -22,6 +22,10 @@ import {
   ViewCategoryProductList,
   ViewProductSingle,
   Basket,
+  AdminHome,
+  Products,
+  NewProduct,
+  Categories,
 } from "./screens/index";
 
 const router = createBrowserRouter(
@@ -38,6 +42,10 @@ const router = createBrowserRouter(
       <Route path="/error" element={<Error />} />
       <Route path="" element={<PrivateRoute />}>
         <Route path="/profile" element={<ProfileScreen />} />
+        <Route path="/myshop" element={<AdminHome />} />
+        <Route path="/admin/products" element={<Products />} />
+        <Route path="/admin/categories" element={<Categories />} />
+        <Route path="/admin/products/new" element={<NewProduct />} />
         <Route path="/cart" element={<Basket />} />
       </Route>
     </Route>
