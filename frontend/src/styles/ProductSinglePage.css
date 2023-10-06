@@ -30,11 +30,11 @@
 }
 
 .product-s-img .img-preview-collection .collection-item:hover {
-  border-color: #ffa40c;
+  border-color: var(--clr-yellow);
 }
 
 .product-s-img .img-preview-collection .collection-item-active {
-  border-color: #ffa40c;
+  border-color: var(--clr-yellow);
 }
 
 .product-s-details {
@@ -75,7 +75,7 @@
   transform: translate(-50%, -50%);
   width: 100%;
   height: 1px;
-  background-color: $clr-dark;
+  background-color: var(--clr-dark);
 }
 
 .product-s-details .price .discounted-percent {
@@ -108,7 +108,7 @@
 
 .product-s-details .quantity .quantity-toggle .qty-dec:hover,
 .product-s-details .quantity .quantity-toggle .qty-inc:hover {
-  background-color: #ffa40c;
+  background-color: var(--clr-yellow);
 }
 
 .shop-btns {
@@ -121,29 +121,29 @@
   display: inline-block;
   padding: 8px 12px;
   border-radius: 2px;
-  color: #fff;
+  color: var(--clr-white);
   transition: all 300ms ease-in-out;
 }
 
 .shop-btns .buy-btn {
-  background-color: #cf363b;
+  background-color: var(--clr-primary);
   margin-right: 8px;
-  border: 1px solid #cf363b;
+  border: 1px solid var(--clr-primary);
 }
 
 .shop-btns .buy-btn:hover {
-  background-color: #fff;
-  color: #cf363b;
+  background-color: var(--clr-white);
+  color: var(--clr-primary);
 }
 
 .shop-btns .add-to-cart-btn {
-  background-color: #000;
-  border: 1px solid #000;
+  background-color: var(--clr-black);
+  border: 1px solid var(--clr-black);
 }
 
 .shop-btns .add-to-cart-btn:hover {
-  background-color: #fff;
-  color: #000;
+  background-color: var(--clr-white);
+  color: var(--clr-black);
 }
 
 .basket-alert {
@@ -159,7 +159,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   visibility: hidden;
   opacity: 0;
-  transition: #fff;
+  transition: var(--clr-white);
 }
 
 .basket-alert.show {
@@ -168,7 +168,7 @@
 }
 
 .basket-alert .alert-content {
-  background-color: #fff;
+  background-color: var(--clr-white);
   max-width: 800px;
   border-radius: 5px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -192,7 +192,7 @@
 .basket-alert .basket-alert-btns .alert-btn {
   border-radius: 4px;
   padding: 5px 10px;
-  border: 1px solid #cf363b;
+  border: 1px solid var(--clr-primary);
 }
 
 .basket-alert .basket-alert-btns .alert-btn:last-child {

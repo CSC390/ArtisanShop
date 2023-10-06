@@ -1,6 +1,8 @@
+@import "../../App.css";
+
 .footer {
   /* margin-top: 60px; */
-  background: #113560;
+  background: #96826a;
   color: rgba(255, 255, 255, 0.7);
   font-size: 14px;
 }
@@ -11,7 +13,7 @@
 }
 
 .footer a:hover {
-  color: #fff;
+  color: var(--clr-white);
 }
 
 /* Footer Columns */
@@ -39,13 +41,13 @@
 .custom-icon {
   position: absolute;
   font-size: 22px;
-  color: #fff;
+  color: var(--clr-white);
   left: 0;
 }
 
 /* Bottom Bar */
 .bottombar {
-  background: #0d294b;
+  background: #695b4a;
   padding-top: 15px;
   padding-bottom: 15px;
   color: rgba(255, 255, 255, 0.4);
@@ -56,7 +58,7 @@
 }
 
 .bottombar a:hover {
-  color: #fff;
+  color: var(--clr-white);
 }
 
 /* Copyright */
@@ -78,3 +80,4 @@
 .footer-menu a {
   color: rgba(255, 255, 255, 0.3);
   text-decoration: none;
+}

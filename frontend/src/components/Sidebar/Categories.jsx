@@ -30,14 +30,13 @@ const Categories = () => {
   };
 
   return (
-    <Col lg={3} className={`sidebar ${isSidebarOn ? "" : "hide-sidebar"}`}>
+    <Col lg={3} className={`sidebar pt-3 ${isSidebarOn ? "" : "hide-sidebar"}`}>
       <Button
-        variant="primary"
-        className="shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
+        className="shadow-none d-flex align-items-center yes justify-content-between w-100"
         onClick={toggleSidebar}
         style={{ height: "65px", marginTop: "-1px", padding: "0 30px" }}
       >
-        <h5 className="m-0">Categories</h5>
+        <h5 className="m-0 fs-19">Categories</h5>
         <i
           className={`fa fa-angle-${isSidebarOn ? "up" : "down"} text-dark`}
         ></i>
