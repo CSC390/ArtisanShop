@@ -1,3 +1,4 @@
+@import "../../App.css";
 .page-not-found .page-not-found-img {
   width: 120px;
 }
@@ -5,7 +6,7 @@
 .page-not-found .btn-back-to-home {
   display: block;
   background-color: #cf363b;
-  color: #fff;
+  color: var(--clr-white);
   padding: 7px 15px;
   margin-top: 8px;
   max-width: 190px;

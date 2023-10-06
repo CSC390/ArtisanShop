@@ -11,12 +11,12 @@ import "./ShopBar.css";
 
 const ShopBar = () => {
   return (
-    <Col lg={9}>
+    <Col lg={9} className="pt-3">
       <Navbar bg="light" variant="light" className="py-3 py-lg-0 px-0 mb-3">
         <Navbar.Brand href="#">
           <h1 className="m-0 display-4 font-weight-semi-bold">
             <span className="text-primary font-weight-bold border px-2 m-1">
-              <FaMoon />
+              <FaMoon className="text-beaver" />
             </span>
             Artisan Marketplace
           </h1>

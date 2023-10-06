@@ -32,7 +32,12 @@ const Header = () => {
   };
   return (
     <header>
-      <Navbar bg="dark" variant="dark" expand="lg" collapseOnSelect>
+      <Navbar
+        className="pb-2 bg-beaver"
+        variant="dark"
+        expand="lg"
+        collapseOnSelect
+      >
         <Container>
           {/* <Navbar.Brand href="/">Local Artisan Marketplace</Navbar.Brand> */}
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
