@@ -26,11 +26,11 @@ public class Product {
     @Column(name = "product_details")
     private String productDetails;
 
-    @Min(value = 1, message = "{com.eCommerceProject.Min.price.message}")
+    @Min(value = 1, message = "{csc394.artisanshop.Min.price.message}")
     @Column(name = "product_price")
     private double productPrice;
 
-    @Min(value = 1, message = "{com.eCommerceProject.Min.stock.message}")
+    @Min(value = 1, message = "{csc394.artisanshop.Min.stock.message}")
     @Column(name = "stock")
     private int stock;
 

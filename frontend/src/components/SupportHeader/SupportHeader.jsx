@@ -38,12 +38,12 @@ const SupportHeader = () => {
 
   return (
     <nav className="">
-      <div className="navbar-main bg-primary">
+      <div className="navbar-main pt-3 bg-beaverC">
         <div className="container">
           <div className="row navbar-main-top align-items-center justify-content-between">
             <div className="col-auto">
               <Link to="/" className="navbar-brand">
-                <span className="text-yellow fs-26 fw-6">Artisan </span>
+                <span className="text-olive fs-26 fw-6">Artisan </span>
                 <span className="text-white fs-26 fw-6">Marketplace</span>
               </Link>
             </div>
@@ -75,7 +75,7 @@ const SupportHeader = () => {
                 onClick={toggleCategory}
               >
                 <AiOutlineBars />
-                <span className="text-uppercase mx-3 fs-13">
+                <span className="text-uppercase mx-3 fs-13 text-nowrap">
                   all categories
                 </span>
                 <BsCaretDownFill />

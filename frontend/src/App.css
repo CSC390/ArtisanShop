@@ -3,6 +3,8 @@
 /* variables */
 :root {
   --clr-beaver: #96826a;
+  --clr-beaverC: #6a7e96;
+  --clr-olive: #a5b697;
   --clr-primary: #cf363b;
   --clr-secondary: #f8f8f8;
   --clr-white: #fff;
@@ -186,6 +188,10 @@ select {
   color: var(--clr-whitesmoke);
 }
 
+.text-olive {
+  color: var(--clr-olive);
+}
+
 .text-beaver {
   color: var(--clr-beaver);
 }
@@ -223,6 +229,11 @@ select {
 }
 
 /* background colors */
+
+.bg-beaverC {
+  background-color: var(--clr-beaverC);
+}
+
 .bg-beaver {
   background-color: var(--clr-beaver);
 }

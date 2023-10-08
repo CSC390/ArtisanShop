@@ -1,5 +1,5 @@
 import { actionType } from "../constants";
-import axios from "../api/axios";
+import { axiosProducts } from "../api/axios";
 
 export const getAllProducts = async (dispatch) => {
     dispatch({
@@ -7,7 +7,7 @@ export const getAllProducts = async (dispatch) => {
     });
 
     try {
-        const { data } = await axios.get("products?limit=30");
+        const { data } = await axiosProducts.get("products?limit=30");
         dispatch({
             type: actionType.GET_PRODUCTS_SUCCESS,
             payload: data.products
@@ -26,7 +26,7 @@ export const getSingleProduct = async (dispatch, id) => {
     });
 
     try {
-        const { data } = await axios.get(`products/${id}`);
+        const { data } = await axiosProducts.get(`products/${id}`);
         dispatch({
             type: actionType.GET_SINGLE_PRODUCT_SUCCESS,
             payload: data

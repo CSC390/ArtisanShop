@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { STATUS } from "../utils/status";
-const BASE_URL = 'https://dummyjson.com/';
+const BASE_URL = '/api/';
 
 const initialState = {
     categories: [],
@@ -43,17 +43,18 @@ const categorySlice = createSlice({
     }
 });
 
+// Return the categories in the DB.
 export const fetchAsyncCategories = createAsyncThunk('categories/fetch', async () => {
-    const response = await fetch(`${BASE_URL}products/categories`);
+    const response = await fetch(`${BASE_URL}categorys/getCategories`);
     const data = await response.json();
 
-
     // Limit the result to, for example, the first 5 categories
-    const limitedData = data.slice(0, 12); // Adjust the range as needed
+    // const limitedData = data.slice(0, 12); // Adjust the range as needed
 
-    return limitedData;
+    return data;
 });
 
+// Return products of a category.
 export const fetchAsyncProductsOfCategory = createAsyncThunk('category-products/fetch', async (category) => {
     const response = await fetch(`${BASE_URL}products/category/${category}`);
     const data = await response.json();
