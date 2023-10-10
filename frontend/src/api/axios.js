@@ -7,5 +7,5 @@ export const axiosCategories = axios.create({
 
 // Axios instance with baseURL for products
 export const axiosProducts = axios.create({
-    baseURL: "https://dummyjson.com//",
+    baseURL: "http://localhost:8080/api/products/",
 });

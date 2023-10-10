@@ -7,10 +7,10 @@ export const getAllProducts = async (dispatch) => {
     });
 
     try {
-        const { data } = await axiosProducts.get("products?limit=30");
+        const { data } = await axiosProducts.get("getAll");
         dispatch({
             type: actionType.GET_PRODUCTS_SUCCESS,
-            payload: data.products
+            payload: data
         });
     } catch (error) {
         dispatch({
@@ -26,7 +26,7 @@ export const getSingleProduct = async (dispatch, id) => {
     });
 
     try {
-        const { data } = await axiosProducts.get(`products/${id}`);
+        const { data } = await axiosProducts.get(`getById/${id}`);
         dispatch({
             type: actionType.GET_SINGLE_PRODUCT_SUCCESS,
             payload: data

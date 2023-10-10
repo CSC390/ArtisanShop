@@ -6,7 +6,7 @@ import {
   NavDropdown,
   Carousel,
 } from "react-bootstrap";
-import { FaCartPlus, FaMoon } from "react-icons/fa";
+import { FaCartPlus, FaFirstdraft } from "react-icons/fa";
 import "./ShopBar.css";
 
 const ShopBar = () => {
@@ -16,7 +16,7 @@ const ShopBar = () => {
         <Navbar.Brand href="#">
           <h1 className="m-0 display-4 font-weight-semi-bold">
             <span className="text-primary font-weight-bold border px-2 m-1">
-              <FaMoon className="text-beaver" />
+              <FaFirstdraft className="text-beaver" />
             </span>
             Artisan Marketplace
           </h1>

@@ -109,14 +109,8 @@ const ProductSinglePage = () => {
               <div className="img-preview py-5">
                 <div className="img-preview-zoom">
                   <img
-                    src={
-                      singleProduct?.images
-                        ? singleProduct.images[previewImg]
-                          ? singleProduct.images[previewImg]
-                          : images.no_image
-                        : images.no_image
-                    }
-                    alt={singleProduct?.title}
+                    src={singleProduct?.productImageUrl}
+                    alt={singleProduct?.productName}
                     className="img-cover"
                   />
                 </div>
@@ -143,26 +137,31 @@ const ProductSinglePage = () => {
             </div>
             <div className="product-s-details py-5">
               <div className="title fw-6 fs-16 px-3 py-1">
-                {singleProduct?.title}
+                {singleProduct?.productName}
               </div>
-              <p className="description fs-14">{singleProduct?.description}</p>
+              <p className="description fs-14">
+                {singleProduct?.productDetails}
+              </p>
               <div className="rating my-2 flex align-center">
                 <AiOutlineStar size={16} className="text-yellow" />
-                <span className="mx-1 fs-13">{singleProduct?.rating}</span>
+                <span className="mx-1 fs-13">
+                  {singleProduct?.favoriteNumber}
+                </span>
               </div>
               <div className="price flex align-center">
                 <span className="discounted-price fs-20 fw-7">
-                  {singleProduct?.price && singleProduct?.discountPercentage
+                  {singleProduct?.productPrice &&
+                  singleProduct?.discountPercentage
                     ? formatPrice(
                         calculateDiscountedPrice(
-                          singleProduct.price,
+                          singleProduct.productPrice,
                           singleProduct.discountPercentage
                         )
                       )
                     : 0}
                 </span>
                 <span className="actual-price text-dark mx-3">
-                  {formatPrice(singleProduct?.price)}
+                  {formatPrice(singleProduct?.productPrice)}
                 </span>
                 <span className="discounted-percent text-primary fs-12">
                   {singleProduct?.discountPercentage}%
@@ -193,7 +192,7 @@ const ProductSinglePage = () => {
               <div className="info py-1 flex flex-wrap align-center">
                 <div className="fs-13">
                   <span className="fw-6">Brand:</span>
-                  <span className="px-1">{singleProduct?.brand}</span>
+                  <span className="px-1">{singleProduct?.productBrand}</span>
                 </div>
                 <div className="fs-13 mx-3">
                   <span className="fw-6">Category:</span>

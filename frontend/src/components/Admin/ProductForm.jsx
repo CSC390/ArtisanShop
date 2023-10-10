@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 // import { ReactSortable } from "react-sortablejs";
 import Loader from "../Loader";
+import { axiosCategories } from "../../api/axios";
 
 export default function ProductForm({
   _id,
@@ -27,7 +28,7 @@ export default function ProductForm({
   //   const router = useRouter();
 
   useEffect(() => {
-    axios.get("/api/categories").then((result) => {
+    axiosCategories.get("getCategoriesIds").then((result) => {
       setCategories(result.data);
     });
   }, []);
@@ -84,19 +85,6 @@ export default function ProductForm({
     });
   }
 
-  const propertiesToFill = [];
-  if (categories.length > 0 && category) {
-    let catInfo = categories.find(({ _id }) => _id === category);
-    propertiesToFill.push(...catInfo.properties);
-    while (catInfo?.parent?._id) {
-      const parentCat = categories.find(
-        ({ _id }) => _id === catInfo?.parent?._id
-      );
-      propertiesToFill.push(...parentCat.properties);
-      catInfo = parentCat;
-    }
-  }
-
   return (
     <form onSubmit={saveProduct}>
       <div className="mb-3">
@@ -126,32 +114,12 @@ export default function ProductForm({
           <option value="">Uncategorized</option>
           {categories.length > 0 &&
             categories.map((c) => (
-              <option key={c._id} value={c._id}>
-                {c.name}
+              <option key={c.id} value={c.id}>
+                {c.categoryName}
               </option>
             ))}
         </select>
       </div>
-
-      {propertiesToFill.length > 0 &&
-        propertiesToFill.map((p) => (
-          <div key={p.name} className="mb-3">
-            <label className="form-label">
-              {p.name[0].toUpperCase() + p.name.substring(1)}
-            </label>
-            <select
-              className="form-select"
-              value={productProperties[p.name]}
-              onChange={(ev) => setProductProp(p.name, ev.target.value)}
-            >
-              {p.values.map((v) => (
-                <option key={v} value={v}>
-                  {v}
-                </option>
-              ))}
-            </select>
-          </div>
-        ))}
 
       <div className="mb-3">
         <label className="form-label">Photos</label>

@@ -21,8 +21,8 @@ const ProductList = ({ products }) => {
               >
                 <div className="product-item-img">
                   <img
-                    src={product?.thumbnail}
-                    alt={product?.title}
+                    src={product?.productImageUrl}
+                    alt={product?.productName}
                     className="img-cover"
                   />
                   <div className="product-discount">
@@ -32,11 +32,15 @@ const ProductList = ({ products }) => {
                 </div>
                 <div className="product-item-body">
                   <span className="product-category">{product?.category}</span>
-                  <span className="product-title">{product?.title}</span>
+                  <span className="product-title">{product?.productName}</span>
 
                   <div className="product-price">
-                    <span className="fw-6 fs-16">$ &nbsp;{product?.price}</span>
-                    <span className="text-dark">Brand: {product?.brand}</span>
+                    <span className="fw-6 fs-16">
+                      $ &nbsp;{product?.productPrice}
+                    </span>
+                    <span className="text-dark">
+                      Brand: {product?.productBrand}
+                    </span>
                   </div>
 
                   <div className="product-item-bottom fs-12 flex align-center">
@@ -45,7 +49,7 @@ const ProductList = ({ products }) => {
                     </div>
                     <div className="product-rating flex align-center">
                       <AiOutlineStar />
-                      {product?.rating}
+                      {product?.favoriteNumber}
                     </div>
                   </div>
                 </div>
