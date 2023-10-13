@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class UserDto {
     @Id
     @GeneratedValue
-    private String userId;
+    private Long userId;
 
     @Column(unique = true, nullable = false)
     private String username;

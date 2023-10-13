@@ -24,15 +24,18 @@ public class UserController {
         return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
     }
 
-    @GetMapping("/profile")
-    public ResponseEntity<User> findByUsername(@RequestParam String username) {
+    @GetMapping("/profile/{username}")
+    public ResponseEntity<User> findByUsername(@PathVariable String username) {
         return userService.findByUserName(username)
                 .map(user -> new ResponseEntity<>(user, HttpStatus.OK))
                 .orElseGet(() -> new ResponseEntity<>(HttpStatus.NOT_FOUND));
     }
 
-    @PutMapping("/profile")
-    public ResponseEntity<User> updateProfile(@RequestBody User user) {
+    @PutMapping("/profile/{username}")
+    public ResponseEntity<User> updateProfile(@PathVariable String username, @RequestBody User user) {
+        if (!username.equals(user.getUsername())) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
         User updatedUser = userService.updateProfile(user);
         if (updatedUser != null) {
             return new ResponseEntity<>(updatedUser, HttpStatus.OK);
@@ -41,5 +44,5 @@ public class UserController {
         }
     }
 
-    // ... any other methods related to user activities can be added here ...
+    // other methods related to user activities will be added here
 }
