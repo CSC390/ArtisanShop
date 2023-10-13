@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,8 +23,9 @@ public class Category {
     @Column(name = "category_name")
     private String categoryName;
 
-    @OneToMany
-    private List<Product> product;
+    @ManyToMany
+    @JoinTable(name = "product_category", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "product_id"))
+    private List<Product> products;
 
     public Category(String categoryName) {
         this.categoryName = categoryName;

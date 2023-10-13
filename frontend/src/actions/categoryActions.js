@@ -17,9 +17,9 @@ export const getCategoriesList = async (dispatch) => {
 export const getCategoryProducts = async (dispatch, categoryKey) => {
     dispatch({ type: actionType.CATEGORY_PRODUCT_REQUEST });
     try {
-        const { data } = await axiosCategories.get(`products/category/${categoryKey}`);
+        const { data } = await axiosCategories.get(`findByCategoryName/${categoryKey}`);
         dispatch({
-            type: actionType.CATEGORY_PRODUCT_SUCCESS, payload: data.products
+            type: actionType.CATEGORY_PRODUCT_SUCCESS, payload: data
         });
     } catch (error) {
         dispatch({

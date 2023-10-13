@@ -68,7 +68,6 @@ function Categories({ swal }) {
               `delete/${categoryId}`
             );
             if (response.status === 200) {
-              console.log("Category deleted successfully");
               fetchCategories();
             } else {
               console.error("Error deleting category:", response.statusText);

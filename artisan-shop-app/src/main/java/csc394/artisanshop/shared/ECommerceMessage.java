@@ -10,6 +10,8 @@ public interface ECommerceMessage {
 
     String PRODUCT_SAVED = "Product Saved";
 
+    String PRODUCT_UPDATED = "Product Updated";
+
     String NOT_FOUND_THIS_NAME = "No Product Found With This Name";
 
     String ADD_TO_CART = "Product Add To Cart";
@@ -42,6 +44,8 @@ public interface ECommerceMessage {
     String USER_DELETED = "User Deleted";
 
     String CATEGORY_NAME_ALREADY_IN_USE = "Category Name Already In Use!";
+
+    String CATEGORY_SAVED = "Category Has Been Saved!";
 
     String SELLER_SAVED = "Seller Saved...";
 

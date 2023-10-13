@@ -49,4 +49,7 @@ public interface ProductService {
     int getNumberOfFavorite(int productId);
 
     void removeFromFavorites(int productId);
+
+    List<Product> getProductsByCategoryName(String categoryName);
+
 }

@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Data
 @NoArgsConstructor
 @Entity
@@ -51,8 +53,9 @@ public class Product {
     @OneToMany
     private List<ProductComment> productComment;
 
-    @ManyToOne
-    private Category category;
+    @ManyToMany(mappedBy = "products")
+    @JsonIgnore
+    private List<Category> categories;
 
     public Product(String productName, String productBrand, String productDetails, double productPrice, int stock,
             String productImageUrl, List<String> images) {

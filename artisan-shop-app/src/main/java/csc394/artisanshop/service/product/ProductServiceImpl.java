@@ -146,4 +146,8 @@ public class ProductServiceImpl implements ProductService {
             throw new NotFoundException("product couldn't be found by following id: " + productId);
         }
     }
+
+    public List<Product> getProductsByCategoryName(String categoryName) {
+        return productRepository.findProductsByCategoryName(categoryName);
+    }
 }

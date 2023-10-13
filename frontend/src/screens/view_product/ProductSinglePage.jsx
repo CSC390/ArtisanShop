@@ -196,7 +196,12 @@ const ProductSinglePage = () => {
                 </div>
                 <div className="fs-13 mx-3">
                   <span className="fw-6">Category:</span>
-                  <span className="px-1">{singleProduct?.category}</span>
+                  <span className="px-1">
+                    {singleProduct &&
+                      singleProduct.categories &&
+                      singleProduct.categories[0] &&
+                      singleProduct.categories[0].categoryName}
+                  </span>
                 </div>
               </div>
 

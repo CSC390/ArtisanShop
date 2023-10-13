@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import jakarta.validation.Valid;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/products/")
@@ -36,29 +37,45 @@ public class ProductController {
 
     @GetMapping("getById/{id}")
     public ResponseEntity<?> getById(@PathVariable int id) {
-        return ResponseEntity.ok(productService.getById(id));
+        Product product = productService.getById(id);
+
+        if (product != null) {
+            ProductViewDto productViewDto = ProductViewDto.of(product);
+            return ResponseEntity.ok(productViewDto);
+        } else {
+            return ResponseEntity.ok(ECommerceMessage.PRODUCT_NOT_FOUND);
+        }
     }
 
     @GetMapping("getAll")
     public ResponseEntity<?> getAll() {
-        final List<Product> products = productService.getAll();
-        if (products.size() <= 0) {
+        List<Product> products = productService.getAll();
+
+        if (products.isEmpty()) {
             return ResponseEntity.ok(ECommerceMessage.PRODUCT_NOT_FOUND);
         }
-        return ResponseEntity.ok(products);
+
+        // Convert the list of Product entities to a list of ProductViewDto
+        List<ProductViewDto> productDtos = products.stream()
+                .map(ProductViewDto::of)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(productDtos);
     }
 
     @GetMapping("getByProductName/{productName}")
     public ResponseEntity<?> getByproductName(@PathVariable String productName) {
-        String productsName = "";
         List<Product> products = this.productService.getByproductName(productName);
-        for (Product product : products) {
-            productsName = product.getProductName();
-        }
-        if (!productName.equals(productsName)) {
+
+        if (products.isEmpty()) {
             return ResponseEntity.ok(ECommerceMessage.NOT_FOUND_THIS_NAME);
         }
-        return ResponseEntity.ok(products);
+
+        List<ProductViewDto> productViewDtos = products.stream()
+                .map(ProductViewDto::of)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(productViewDtos);
     }
 
     @GetMapping("getByProductBrand/{productBrand}")
@@ -122,7 +139,17 @@ public class ProductController {
 
     @PutMapping("update-product-details")
     public ResponseEntity<?> updateByProductDetails(@RequestBody ProductDetailsUpdateRequest updateRequest) {
-        productService.updateByProductDetails(updateRequest.getProductId(), updateRequest.getProductDetails());
-        return ResponseEntity.ok("success");
+        int productId = updateRequest.getProductId();
+        String productDetails = updateRequest.getProductDetails();
+
+        Product product = productService.getById(productId);
+
+        if (product == null) {
+            return ResponseEntity.ok(ECommerceMessage.PRODUCT_NOT_FOUND);
+        }
+
+        productService.updateByProductDetails(productId, productDetails);
+        return ResponseEntity.ok(ECommerceMessage.PRODUCT_UPDATED);
+
     }
 }

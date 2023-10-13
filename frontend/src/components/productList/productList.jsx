@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 import { FilterContext } from "../../context/filterContext";
 import PropTypes from "prop-types";
 import { useContext } from "react";
+import React, { useState } from "react";
 
 const ProductList = ({ products }) => {
   const { grid_view } = useContext(FilterContext);
+
   return (
     <div className="products">
       <div className="container">
@@ -31,7 +33,9 @@ const ProductList = ({ products }) => {
                   </div>
                 </div>
                 <div className="product-item-body">
-                  <span className="product-category">{product?.category}</span>
+                  <span className="product-category">
+                    {product?.categories?.[0]?.categoryName}
+                  </span>
                   <span className="product-title">{product?.productName}</span>
 
                   <div className="product-price">

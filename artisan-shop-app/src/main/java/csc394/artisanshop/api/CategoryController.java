@@ -1,8 +1,12 @@
 package csc394.artisanshop.api;
 
 import csc394.artisanshop.service.category.CategoryService;
+import csc394.artisanshop.service.product.ProductService;
+import csc394.artisanshop.dto.viewDto.ProductViewDto;
 import csc394.artisanshop.model.Category;
+import csc394.artisanshop.repository.CategoryRepository;
 import csc394.artisanshop.shared.ECommerceMessage;
+import csc394.artisanshop.model.Product;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.http.HttpStatus;
@@ -10,9 +14,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("api/categorys/")
@@ -21,6 +27,8 @@ import java.util.Map;
 public class CategoryController {
 
     private final CategoryService categoryService;
+    private final ProductService productService;
+    private final CategoryRepository categoryRepository;
 
     @GetMapping("getAll")
     public List<Category> getAll() {
@@ -49,12 +57,7 @@ public class CategoryController {
     @PostMapping("add")
     public ResponseEntity<?> add(@RequestBody Category category) {
         this.categoryService.add(category);
-        return ResponseEntity.ok(ECommerceMessage.CATEGORY_NAME_ALREADY_IN_USE);
-    }
-
-    @GetMapping("getByCategoryName")
-    public List<Category> getByCategoryName(String categoryName) {
-        return this.categoryService.getByCategoryName(categoryName);
+        return ResponseEntity.ok(ECommerceMessage.CATEGORY_SAVED);
     }
 
     @DeleteMapping("delete/{categoryId}")
@@ -89,4 +92,56 @@ public class CategoryController {
         return ResponseEntity.ok(savedCategory);
     }
 
+    @PostMapping("{categoryId}/addProduct/{productId}")
+    public ResponseEntity<?> addProductToCategory(
+            @PathVariable("categoryId") int categoryId,
+            @PathVariable("productId") int productId) {
+        Category category = categoryService.getCategoryById(categoryId);
+
+        // Use the productService instance to get the product
+        Product product = productService.getById(productId);
+
+        if (category == null || product == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Category or Product not found");
+        }
+
+        // Add the product to the category
+        category.getProducts().add(product);
+        categoryRepository.save(category);
+
+        return ResponseEntity.ok("Product added to the category successfully");
+    }
+
+    @DeleteMapping("{categoryId}/removeProduct/{productId}")
+    public ResponseEntity<?> removeProductFromCategory(
+            @PathVariable("categoryId") int categoryId,
+            @PathVariable("productId") int productId) {
+        Category category = categoryService.getCategoryById(categoryId);
+        Product product = productService.getById(productId);
+
+        if (category == null || product == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Category or Product not found");
+        }
+
+        // Remove the product from the category
+        category.getProducts().remove(product);
+        categoryRepository.save(category);
+
+        return ResponseEntity.ok("Product removed from the category successfully");
+    }
+
+    @GetMapping("findByCategoryName/{categoryName}")
+    public ResponseEntity<List<ProductViewDto>> findByCategoryName(@PathVariable String categoryName) {
+        List<Product> products = productService.getProductsByCategoryName(categoryName);
+
+        if (products.isEmpty()) {
+            return ResponseEntity.ok(Collections.emptyList());
+        }
+
+        List<ProductViewDto> productDtos = products.stream()
+                .map(ProductViewDto::of)
+                .collect(Collectors.toList());
+
+        return ResponseEntity.ok(productDtos);
+    }
 }
