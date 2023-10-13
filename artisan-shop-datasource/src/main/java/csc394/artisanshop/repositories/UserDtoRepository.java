@@ -13,5 +13,4 @@ public interface UserDtoRepository extends JpaRepository<UserDto, UUID> { // Ass
     @Query("SELECT u FROM UserDto u WHERE u.username = ?1")
     Optional<UserDto> findByUsername(String username);
 
-    // Add more query methods as per your requirements.
 }
