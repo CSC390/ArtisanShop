@@ -4,35 +4,28 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>csc390</groupId>
+        <groupId>csc394.artisanshop</groupId>
         <artifactId>artisanshop</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <groupId>org.example</groupId>
+    <groupId>csc394.artisanshop</groupId>
     <artifactId>artisan-shop-datasource</artifactId>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
-            <groupId>org.example</groupId>
-            <artifactId>artisan-shop-app</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.ivanovvlad9626</groupId>
-            <artifactId>TestRail-RestAssured</artifactId>
-            <version>0.5</version>
-        </dependency>
-        <dependency>
-            <groupId>com.github.ivanovvlad9626</groupId>
-            <artifactId>TestRail-RestAssured</artifactId>
-            <version>0.5</version>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
         </dependency>
     </dependencies>
 
