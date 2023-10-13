@@ -6,7 +6,7 @@ import csc394.artisanshop.dto.viewDto.ProductViewDto;
 import csc394.artisanshop.model.ConfirmedOrder;
 // import csc394.artisanshop.model.CreditCard;
 import csc394.artisanshop.model.Product;
-import csc394.artisanshop.request.ConfirmCartRequest;
+//import csc394.artisanshop.request.ConfirmCartRequest;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;

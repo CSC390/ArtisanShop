@@ -93,8 +93,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ConfirmedOrder getConfirmedOrderById(int id) {
     return confirmedOrderRepository.findById(id)
-    .orElseThrow(() -> new NotFoundException("confirmed order couldn't be found
-    by following id: " + id));
+    .orElseThrow(() -> new NotFoundException("confirmed order couldn't be found by following id: " + id));
     }
 
     @Override

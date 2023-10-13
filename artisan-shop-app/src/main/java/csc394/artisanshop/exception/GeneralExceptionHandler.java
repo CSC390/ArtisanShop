@@ -15,7 +15,7 @@ import jakarta.validation.constraints.NotNull;
 public class GeneralExceptionHandler extends ResponseEntityExceptionHandler {
 
     @NotNull
-    @Override
+    //@Override                                                                                          //commented out to stop error
     protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex,
             @NotNull HttpHeaders headers, HttpStatus status, @NotNull WebRequest request) {
         return super.handleMethodArgumentNotValid(ex, headers, status, request);
