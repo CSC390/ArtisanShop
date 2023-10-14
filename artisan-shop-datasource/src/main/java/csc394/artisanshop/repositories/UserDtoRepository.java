@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Repository
-public interface UserDtoRepository extends JpaRepository<UserDto, UUID> { // Assuming username is the primary key
+public interface UserDtoRepository extends JpaRepository<UserDto, UUID> { 
     @Query("SELECT u FROM UserDto u WHERE u.username = ?1")
     Optional<UserDto> findByUsername(String username);
 
