@@ -36,8 +36,10 @@ public class CategoryController {
     }
 
     @GetMapping("getCategories")
-    public List<String> getCategories() {
-        return this.categoryService.getCategories();
+    public ResponseEntity<List<String>> getCategories() {
+        List<String> categoryNames = categoryService.getCategories();
+
+        return ResponseEntity.ok(categoryNames);
     }
 
     @GetMapping("getCategoriesIds")
@@ -56,8 +58,13 @@ public class CategoryController {
 
     @PostMapping("add")
     public ResponseEntity<?> add(@RequestBody Category category) {
-        this.categoryService.add(category);
-        return ResponseEntity.ok(ECommerceMessage.CATEGORY_SAVED);
+        Category savedCategory = categoryService.add(category);
+
+        if (savedCategory != null) {
+            return ResponseEntity.ok(ECommerceMessage.CATEGORY_SAVED);
+        } else {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to add the category");
+        }
     }
 
     @DeleteMapping("delete/{categoryId}")

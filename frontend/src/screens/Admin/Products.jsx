@@ -14,13 +14,13 @@ export default function Products() {
 
   return (
     <Layout>
-      <Link className="btn-primary" to={"/admin/products/new"}>
+      <Link className="btn btn-secondary fs-13" to={"/admin/products/new"}>
         Add new product
       </Link>
       <table className="basic mt-2">
         <thead>
           <tr>
-            <td>Product name</td>
+            <td className="pt-4 fs-23">Product name</td>
             <td></td>
           </tr>
         </thead>

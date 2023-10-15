@@ -26,7 +26,6 @@ import java.util.stream.Collectors;
 public class ProductController {
 
     private final ProductService productService;
-
     private final UpdateProductPriceService updateProductPriceService;
 
     @PostMapping("add")

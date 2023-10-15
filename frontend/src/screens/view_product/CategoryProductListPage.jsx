@@ -21,7 +21,15 @@ const CategoryProductListPage = () => {
           {categoryLoading ? (
             <Loader />
           ) : (
-            <ProductList products={categoryProducts} />
+            <>
+              {categoryProducts.length === 0 ? (
+                <p className="text-center p-xxl-5 fs-26">
+                  No products available in this category.
+                </p>
+              ) : (
+                <ProductList products={categoryProducts} />
+              )}
+            </>
           )}
         </div>
       </div>
