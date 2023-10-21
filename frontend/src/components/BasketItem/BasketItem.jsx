@@ -39,11 +39,15 @@ const BasketItem = ({ item }) => {
 
       <div className="basket-list-item-info grid">
         <div className="item-info-img">
-          <img src={item?.thumbnail} alt={item?.title} className="img-cover" />
+          <img
+            src={item?.productImageUrl}
+            alt={item?.productName}
+            className="img-cover"
+          />
         </div>
         <div className="item-info-details py-2">
           <div className="item-info-details-top">
-            <h4>{item?.title}</h4>
+            <h4>{item?.productName}</h4>
             <button
               type="button"
               className="remove-btn"
@@ -54,14 +58,16 @@ const BasketItem = ({ item }) => {
           </div>
 
           <div className="flex align-center flex-wrap py-1">
-            <span className="fs-13 text-dark">Brand: {item?.brand}</span>
+            <span className="fs-13 text-dark">Brand: {item?.productBrand}</span>
             <span className="mx-3 fs-13 text-dark">
-              Category: {item?.category}
+              Category: {item?.categories[0].categoryName}
             </span>
           </div>
 
           <div className="flex align-center justify-between">
-            <span className="fw-7 fs-17 text-yellow">${item?.price}</span>
+            <span className="fw-7 fs-17 text-yellow">
+              ${item?.productPrice}
+            </span>
             <div className="quantity">
               <div className="quantity-toggle flex">
                 <button

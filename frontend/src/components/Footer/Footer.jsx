@@ -106,7 +106,8 @@ const Footer = () => {
         <div className="copyright">
           Company @
           <a
-            href="#http://csc394-blue-frogs-hub.s3-website-us-east-1.amazonaws.com/"
+            href="http://csc394-blue-frogs-hub.s3-website-us-east-1.amazonaws.com/"
+            rel="noreferrer"
             target="_blank"
           >
             Artisan Marketplace

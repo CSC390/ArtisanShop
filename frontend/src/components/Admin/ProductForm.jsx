@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 // import { ReactSortable } from "react-sortablejs";
 import Loader from "../Loader";
-import { axiosCategories } from "../../api/axios";
+import { axiosCategories, axiosProducts, axiosUpload } from "../../api/axios";
 
 export default function ProductForm({
   _id,
@@ -54,7 +54,7 @@ export default function ProductForm({
   }
 
   if (goToProducts) {
-    router.push("/products");
+    axiosProducts.push("getAll");
   }
 
   async function uploadImages(ev) {
@@ -65,7 +65,8 @@ export default function ProductForm({
       for (const file of files) {
         data.append("file", file);
       }
-      const res = await axios.post("/api/upload", data);
+      const res = await axiosUpload.post("upload", data);
+      console.log(data);
       setImages((oldImages) => {
         return [...oldImages, ...res.data.links];
       });
@@ -96,6 +97,20 @@ export default function ProductForm({
           className="form-control"
           id="productName"
           placeholder="Product name"
+          value={title}
+          onChange={(ev) => setTitle(ev.target.value)}
+        />
+      </div>
+
+      <div className="mb-3">
+        <label htmlFor="productBrand" className="form-label">
+          Product Brand
+        </label>
+        <input
+          type="text"
+          className="form-control"
+          id="productBrand"
+          placeholder="Product Brand"
           value={title}
           onChange={(ev) => setTitle(ev.target.value)}
         />

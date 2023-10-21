@@ -47,7 +47,7 @@ const ProductList = ({ products }) => {
                     </span>
                   </div>
 
-                  <div className="product-item-bottom fs-12 flex align-center">
+                  {/* <div className="product-item-bottom fs-12 flex align-center">
                     <div>
                       <span className="fw-6">Stock:</span> {product?.stock}
                     </div>
@@ -55,7 +55,7 @@ const ProductList = ({ products }) => {
                       <AiOutlineStar />
                       {product?.favoriteNumber}
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </Link>
             );

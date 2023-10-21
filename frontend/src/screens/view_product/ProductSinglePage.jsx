@@ -56,16 +56,11 @@ const ProductSinglePage = () => {
   }, [id]);
 
   const basketHandler = (product) => {
-    let discountedPrice = calculateDiscountedPrice(
-      product?.price,
-      product?.discountPercentage
-    );
-    let totalPrice = quantity * discountedPrice;
+    let totalPrice = quantity * product?.productPrice;
     addToBasket(basketDispatch, {
       ...product,
       quantity: quantity,
       totalPrice,
-      discountedPrice,
       checkoutStatus: false,
     });
     setBasketMsgOn(basketDispatch);
@@ -109,8 +104,14 @@ const ProductSinglePage = () => {
               <div className="img-preview py-5">
                 <div className="img-preview-zoom">
                   <img
-                    src={singleProduct?.productImageUrl}
-                    alt={singleProduct?.productName}
+                    src={
+                      singleProduct?.images
+                        ? singleProduct.images[previewImg]
+                          ? singleProduct.images[previewImg]
+                          : images.no_image
+                        : images.no_image
+                    }
+                    alt={singleProduct?.title}
                     className="img-cover"
                   />
                 </div>
@@ -150,24 +151,9 @@ const ProductSinglePage = () => {
               </div>
               <div className="price flex align-center">
                 <span className="discounted-price fs-20 fw-7">
-                  {singleProduct?.productPrice &&
-                  singleProduct?.discountPercentage
-                    ? formatPrice(
-                        calculateDiscountedPrice(
-                          singleProduct.productPrice,
-                          singleProduct.discountPercentage
-                        )
-                      )
-                    : 0}
-                </span>
-                <span className="actual-price text-dark mx-3">
-                  {formatPrice(singleProduct?.productPrice)}
-                </span>
-                <span className="discounted-percent text-primary fs-12">
-                  {singleProduct?.discountPercentage}%
+                  {formatPrice(singleProduct?.productPrice) || 0}
                 </span>
               </div>
-
               <div className="quantity py-3">
                 <h5 className="fw-4">Quantity:</h5>
                 <div className="quantity-toggle flex">
