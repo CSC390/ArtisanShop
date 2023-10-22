@@ -1,4 +1,4 @@
-package csc394.artisanshop.services.impl;
+package csc394.artisanshop.impl;
 
 import csc394.artisanshop.entities.User;
 import csc394.artisanshop.datamapper.UserMapper;
@@ -42,11 +42,8 @@ public class UserServiceImpl implements UserService {
         if(user.getUserId() == null) {
             throw new IllegalArgumentException("User ID cannot be null during update");
         }
-
         UserDto userDto = UserMapper.toUserDto(user);
         UserDto updatedUserDto = userDtoRepository.save(userDto);
         return UserMapper.toUser(updatedUserDto);
     }
-
-    // Other methods can follow a similar pattern...
 }
