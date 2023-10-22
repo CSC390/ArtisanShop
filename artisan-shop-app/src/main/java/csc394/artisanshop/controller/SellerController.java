@@ -51,9 +51,11 @@ public class SellerController {
 
     @PostMapping("/{sellerId}/addItem")
     public ResponseEntity<Item> addItem(@PathVariable Long sellerId, @RequestBody Item item) {
+        item.setImageUrl(item.getImageUrl());
         Item addedItem = shopService.addItem(sellerId, item);
         return new ResponseEntity<>(addedItem, HttpStatus.CREATED);
     }
+
 
     @PutMapping("/{sellerId}/updateItem/{itemId}")
     public ResponseEntity<Item> updateItemPrice(@PathVariable Long sellerId, @PathVariable Long itemId, @RequestBody Double newPrice) {

@@ -6,6 +6,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "items")
 @Data
@@ -17,8 +20,8 @@ public class ItemDto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String imageUrl;
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<ImageDto> images = new ArrayList<>();
 
     @Column
     private String itemName;

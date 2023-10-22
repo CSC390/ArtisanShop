@@ -6,24 +6,26 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name = "categories")
+@Table(name = "images")
 @Data
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class CategoryDto {
+public class ImageDto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
-    private String categoryName;
+    private String url;
 
-    @OneToMany(mappedBy = "categoryDto")
-    private List<ItemDto> items = new ArrayList<>();
+    @Column
+    private String description;
 
+    @ManyToOne
+    @JoinColumn(name = "item_id")
+    private ItemDto item;
 }

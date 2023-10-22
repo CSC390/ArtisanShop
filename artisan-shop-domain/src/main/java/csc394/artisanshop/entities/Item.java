@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -16,6 +17,6 @@ public class Item {
     private Double price;
     private ItemCategory itemCategory;
     private Integer quantity;
-    private String imageUrl;
+    private List<Image> imageUrl;
     private Seller seller;
 }

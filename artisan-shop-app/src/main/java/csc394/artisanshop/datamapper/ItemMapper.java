@@ -13,7 +13,7 @@ public class ItemMapper {
         itemDto.setDescription(item.getDescription());
         itemDto.setItemName(item.getItemNameEnt());
         itemDto.setPrice(item.getPrice());
-        itemDto.setImageUrl(item.getImageUrl());
+        //itemDto.setImages(item.getImageUrl());
         itemDto.setQuantity(item.getQuantity());
         itemDto.setCategoryDto(CategoryMapper.toCategoryDto(item.getItemCategory()));
         itemDto.setSellerDto(SellerMapper.toSellerDto(item.getSeller()));
@@ -32,7 +32,7 @@ public class ItemMapper {
         item.setDescription(itemDto.getDescription());
         item.setPrice(itemDto.getPrice());
         item.setQuantity(itemDto.getQuantity());
-        item.setImageUrl(itemDto.getImageUrl());
+        //item.setImageUrl(itemDto.getImages());
         item.setItemCategory(CategoryMapper.toCategory(itemDto.getCategoryDto()));
         item.setSeller(SellerMapper.toSeller(itemDto.getSellerDto()));
         return item;

@@ -64,7 +64,7 @@ public class ShopServiceImpl implements ShopService {
 
         SellerDto sellerDto = sellerDtoOptional.get();
         ItemDto itemDto = ItemMapper.toItemDto(item);
-        itemDto.setSellerDto(sellerDto);  // Set seller to item
+        itemDto.setSellerDto(sellerDto);
         ItemDto savedItemDto = itemDtoRepository.save(itemDto);
         return ItemMapper.toItem(savedItemDto);
     }
