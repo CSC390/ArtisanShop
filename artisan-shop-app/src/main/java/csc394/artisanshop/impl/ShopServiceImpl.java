@@ -33,9 +33,9 @@ public class ShopServiceImpl implements ShopService {
     @Transactional
     @Override
     public Seller setupShop(Seller seller) {
-        SellerDto sellerDto = SellerMapper.toSellerDto(seller); // Convert to DTO
-        SellerDto savedSellerDto = sellerDtoRepository.save(sellerDto); // Save DTO
-        return SellerMapper.toSeller(savedSellerDto); // Convert back to entity for return
+        SellerDto sellerDto = SellerMapper.toSellerDto(seller);
+        SellerDto savedSellerDto = sellerDtoRepository.save(sellerDto);
+        return SellerMapper.toSeller(savedSellerDto);
     }
 
 
@@ -48,7 +48,7 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     @Transactional
-    public Seller updateShop(Seller seller) {
+    public Seller updateShop(Long id, Seller seller) {
         SellerDto sellerDto = SellerMapper.toSellerDto(seller);
         SellerDto updatedSellerDto = sellerDtoRepository.save(sellerDto);
         return SellerMapper.toSeller(updatedSellerDto);
@@ -56,8 +56,15 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     @Transactional
-    public Item addItem(Item item) {
+    public Item addItem(Long sellerId, Item item) {
+        Optional<SellerDto> sellerDtoOptional = sellerDtoRepository.findById(sellerId);
+        if (!sellerDtoOptional.isPresent()) {
+            throw new IllegalArgumentException("Seller with ID: " + sellerId + " not found");
+        }
+
+        SellerDto sellerDto = sellerDtoOptional.get();
         ItemDto itemDto = ItemMapper.toItemDto(item);
+        itemDto.setSellerDto(sellerDto);  // Set seller to item
         ItemDto savedItemDto = itemDtoRepository.save(itemDto);
         return ItemMapper.toItem(savedItemDto);
     }
@@ -70,7 +77,7 @@ public class ShopServiceImpl implements ShopService {
             ItemDto itemDto = optionalItem.get();
             itemDto.setPrice(newPrice);
             ItemDto updatedItemDto = itemDtoRepository.save(itemDto);
-            return ItemMapper.toItem(updatedItemDto); // Convert updated ItemDto back to Item
+            return ItemMapper.toItem(updatedItemDto);
         } else {
             throw new IllegalArgumentException("Item with ID: " + itemId + " not found");
         }
@@ -78,9 +85,35 @@ public class ShopServiceImpl implements ShopService {
     @Override
     @Transactional
     public List<Item> getAllItems() {
-        List<ItemDto> itemDtos = itemDtoRepository.findAll();
+        List<ItemDto> itemDto = itemDtoRepository.findAll();
+        return itemDto.stream()
+                .map(ItemMapper::toItem)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public void deleteSeller(Long id) {
+        sellerDtoRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public void removeItem(Long sellerId, Long itemId) {
+        Optional<ItemDto> itemDtoOptional = itemDtoRepository.findById(itemId);
+        if (!itemDtoOptional.isPresent() || !itemDtoOptional.get().getSellerDto().getId().equals(sellerId)) {
+            throw new IllegalArgumentException("Item with ID: " + itemId + " not found or doesn't belong to the seller with ID: " + sellerId);
+        }
+
+        itemDtoRepository.deleteById(itemId);
+    }
+
+    @Override
+    @Transactional
+    public List<Item> getSellerItems(Long sellerId) {
+        List<ItemDto> itemDtos = itemDtoRepository.findBySellerDto_Id(sellerId);
         return itemDtos.stream()
-                .map(ItemMapper::toItem) // Convert each ItemDto to Item
+                .map(ItemMapper::toItem)
                 .collect(Collectors.toList());
     }
 }

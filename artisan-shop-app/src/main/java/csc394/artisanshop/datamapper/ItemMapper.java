@@ -8,13 +8,16 @@ public class ItemMapper {
         if (item == null) {
             return null;
         }
-
         ItemDto itemDto = new ItemDto();
         itemDto.setId(item.getId());
         itemDto.setDescription(item.getDescription());
-        itemDto.setName(item.getName());
+        itemDto.setItemName(item.getItemNameEnt());
         itemDto.setPrice(item.getPrice());
-      //  itemDto.setCategoryDto(item.getItemCategory());
+        itemDto.setImageUrl(item.getImageUrl());
+        itemDto.setQuantity(item.getQuantity());
+        itemDto.setCategoryDto(CategoryMapper.toCategoryDto(item.getItemCategory()));
+        itemDto.setSellerDto(SellerMapper.toSellerDto(item.getSeller()));
+
         return itemDto;
     }
 
@@ -24,12 +27,14 @@ public class ItemMapper {
         }
 
         Item item = new Item();
-        item.setId(itemDto.getId());//.setSellerId(itemDto.getSellerId());
-        item.setName(itemDto.getName());//.setSellerEmail(itemDto.getSellerEmail());
-        item.setDescription(itemDto.getDescription());//.setSellerName(itemDto.getSellerName());
-        item.setPrice(itemDto.getPrice());//.setFirstName(itemDto.getFirstName());
-      //  item.setItemCategory(itemDto.getCategoryDto());
-
+        item.setId(itemDto.getId());
+        item.setItemNameEnt(itemDto.getItemName());
+        item.setDescription(itemDto.getDescription());
+        item.setPrice(itemDto.getPrice());
+        item.setQuantity(itemDto.getQuantity());
+        item.setImageUrl(itemDto.getImageUrl());
+        item.setItemCategory(CategoryMapper.toCategory(itemDto.getCategoryDto()));
+        item.setSeller(SellerMapper.toSeller(itemDto.getSellerDto()));
         return item;
     }
 }

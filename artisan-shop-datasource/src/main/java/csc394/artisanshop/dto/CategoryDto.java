@@ -1,7 +1,13 @@
 package csc394.artisanshop.dto;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "categories")
@@ -16,4 +22,11 @@ public class CategoryDto {
 
     @Column
     private String categoryName;
+
+//    @OneToMany(mappedBy = "categoryDto")
+//    private List<ItemDto> items;
+
+    @OneToMany(mappedBy = "categoryDto")
+    private List<ItemDto> items = new ArrayList<>();
+
 }

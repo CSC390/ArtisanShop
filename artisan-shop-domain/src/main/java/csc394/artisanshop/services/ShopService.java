@@ -17,7 +17,7 @@ public interface ShopService {
     Seller setupShop(Seller seller);
 
     /**
-     * Finds a shop by their shop name.
+     * Finds a shop by their shop itemNameEnt.
      *
      * @param shopName The username of the user.
      * @return An Optional of the user if found.
@@ -27,14 +27,20 @@ public interface ShopService {
     /**
      * Updates a seller's shop.
      *
+     * @param id
      * @param seller The user entity with updated details.
      * @return The updated user entity.
      */
-    Seller updateShop(Seller seller);
+    Seller updateShop(Long id, Seller seller);
 
-    Item addItem(Item item);
+    Item addItem(Long sellerId, Item item);
     Item updateItemPrice(Long itemId, Double newPrice);
 
     List<Item> getAllItems();
 
+    void deleteSeller(Long id);
+
+    void removeItem(Long sellerId, Long itemId);
+
+    List<Item> getSellerItems(Long sellerId);
 }

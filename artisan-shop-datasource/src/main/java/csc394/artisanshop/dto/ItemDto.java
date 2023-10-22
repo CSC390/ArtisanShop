@@ -18,9 +18,17 @@ public class ItemDto {
     private Long id;
 
     @Column
-    private String name;
+    private String imageUrl;
+
+    @Column
+    private String itemName;
+
+    @Column
+    private Integer quantity;
+
     @Column
     private String description;
+
     @Column
     private Double price;
 
