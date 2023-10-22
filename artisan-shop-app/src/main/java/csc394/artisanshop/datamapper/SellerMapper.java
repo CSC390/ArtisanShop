@@ -13,7 +13,7 @@ public class SellerMapper {
         SellerDto sellerDto = new SellerDto();
         sellerDto.setId(seller.getSellerId());
         sellerDto.setSellerEmail(seller.getSellerEmail());
-        sellerDto.setSellerName(seller.getSellerName());
+        sellerDto.setFirstName(seller.getFirstName());
         sellerDto.setLastName(seller.getLastName());
         sellerDto.setSellerName(seller.getSellerName());
         return sellerDto;

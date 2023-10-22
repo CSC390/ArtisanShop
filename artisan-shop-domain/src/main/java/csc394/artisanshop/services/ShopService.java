@@ -17,7 +17,7 @@ public interface ShopService {
     Seller setupShop(Seller seller);
 
     /**
-     * Finds a shop by their shop itemNameEnt.
+     * Finds a shop by their shop itemName.
      *
      * @param shopName The username of the user.
      * @return An Optional of the user if found.

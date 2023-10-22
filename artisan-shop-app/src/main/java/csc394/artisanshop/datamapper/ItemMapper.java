@@ -11,7 +11,7 @@ public class ItemMapper {
         ItemDto itemDto = new ItemDto();
         itemDto.setId(item.getId());
         itemDto.setDescription(item.getDescription());
-        itemDto.setItemName(item.getItemNameEnt());
+        itemDto.setItemName(item.getItemName());
         itemDto.setPrice(item.getPrice());
         //itemDto.setImages(item.getImageUrl());
         itemDto.setQuantity(item.getQuantity());
@@ -28,7 +28,7 @@ public class ItemMapper {
 
         Item item = new Item();
         item.setId(itemDto.getId());
-        item.setItemNameEnt(itemDto.getItemName());
+        item.setItemName(itemDto.getItemName());
         item.setDescription(itemDto.getDescription());
         item.setPrice(itemDto.getPrice());
         item.setQuantity(itemDto.getQuantity());

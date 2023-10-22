@@ -12,7 +12,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class Item {
     private Long id;
-    private String itemNameEnt;
+    private String itemName;
     private String description;
     private Double price;
     private ItemCategory itemCategory;

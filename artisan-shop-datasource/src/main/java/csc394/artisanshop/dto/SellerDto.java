@@ -1,5 +1,6 @@
 package csc394.artisanshop.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -15,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 public class SellerDto {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true, nullable = false)
@@ -31,5 +32,6 @@ public class SellerDto {
     private String lastName;
 
     @OneToMany(mappedBy = "sellerDto")
+    @JsonIgnore
     private List<ItemDto> items = new ArrayList<>();
 }

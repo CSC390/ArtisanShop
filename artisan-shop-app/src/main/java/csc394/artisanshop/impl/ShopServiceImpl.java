@@ -53,7 +53,6 @@ public class ShopServiceImpl implements ShopService {
         SellerDto updatedSellerDto = sellerDtoRepository.save(sellerDto);
         return SellerMapper.toSeller(updatedSellerDto);
     }
-
     @Override
     @Transactional
     public Item addItem(Long sellerId, Item item) {
@@ -61,7 +60,6 @@ public class ShopServiceImpl implements ShopService {
         if (!sellerDtoOptional.isPresent()) {
             throw new IllegalArgumentException("Seller with ID: " + sellerId + " not found");
         }
-
         SellerDto sellerDto = sellerDtoOptional.get();
         ItemDto itemDto = ItemMapper.toItemDto(item);
         itemDto.setSellerDto(sellerDto);
