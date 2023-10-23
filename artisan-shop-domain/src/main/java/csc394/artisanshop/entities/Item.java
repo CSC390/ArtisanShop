@@ -20,4 +20,5 @@ public class Item {
     private Integer quantity;
     private List<Image> imageUrls;
     private Seller seller;
+    private Order order;
 }

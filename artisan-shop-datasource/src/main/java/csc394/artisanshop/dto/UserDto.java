@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 @Data
@@ -26,4 +28,7 @@ public class UserDto {
 
     @Column
     private String lastName;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderDto> orders;
 }

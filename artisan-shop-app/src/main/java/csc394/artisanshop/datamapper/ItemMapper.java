@@ -2,8 +2,10 @@ package csc394.artisanshop.datamapper;
 
 import csc394.artisanshop.dto.ImageDto;
 import csc394.artisanshop.dto.ItemDto;
+import csc394.artisanshop.dto.OrderDto;
 import csc394.artisanshop.entities.Image;
 import csc394.artisanshop.entities.Item;
+import csc394.artisanshop.entities.Order;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,6 +33,11 @@ public class ItemMapper {
                 : new ArrayList<>();
         itemDto.setImages(imageDtos);
 
+        if (item.getOrder() != null) {
+            OrderDto orderDto = OrderMapper.toOrderDto(item.getOrder());
+            itemDto.setOrder(orderDto);
+        }
+
         return itemDto;
     }
 
@@ -55,6 +62,11 @@ public class ItemMapper {
                 .collect(Collectors.toList())
                 : new ArrayList<>();
         item.setImageUrls(images);
+
+        if (itemDto.getOrder() != null) {
+            Order order = OrderMapper.toOrder(itemDto.getOrder());
+            item.setOrder(order);
+        }
         return item;
     }
 }

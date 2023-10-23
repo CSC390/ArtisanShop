@@ -25,7 +25,6 @@ public class ItemDto {
     @JsonBackReference
     private List<ImageDto> images = new ArrayList<>();
 
-
     @Column
     private String itemName;
 
@@ -55,4 +54,8 @@ public class ItemDto {
             this.images = images;
         }
     }
+
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private OrderDto order;
 }

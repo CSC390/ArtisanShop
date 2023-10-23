@@ -43,6 +43,4 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-
-    // other methods related to user activities will be added here
 }
