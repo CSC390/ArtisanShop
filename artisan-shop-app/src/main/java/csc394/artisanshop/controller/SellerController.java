@@ -32,27 +32,11 @@ public class SellerController {
         return new ResponseEntity<>(updatedSeller, HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<Void> deleteSeller(@PathVariable Long id) {
-        shopService.deleteSeller(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
-
     @PostMapping("/{sellerId}/addItem")
     public ResponseEntity<Item> addItem(@PathVariable Long sellerId, @RequestBody Item item) {
         item.setImageUrls(item.getImageUrls());
         Item addedItem = shopService.addItem(sellerId, item);
         return new ResponseEntity<>(addedItem, HttpStatus.CREATED);
-    }
-
-    @PutMapping("/updateItem/{itemId}")
-    public ResponseEntity<Item> updateItemPrice( @PathVariable Long itemId, @RequestBody Double newPrice) {
-        Item updatedItem = shopService.updateItemPrice(itemId, newPrice);
-        if (updatedItem == null) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        return new ResponseEntity<>(updatedItem, HttpStatus.OK);
-
     }
 
     @DeleteMapping("/{sellerId}/removeItem/{itemId}")
@@ -66,6 +50,17 @@ public class SellerController {
         List<Item> items = shopService.getSellerItems(sellerId);
         return new ResponseEntity<>(items, HttpStatus.OK);
     }
+
+    @GetMapping("/seller/{shopName}")
+    public ResponseEntity<Seller> getSellerByShopName(@PathVariable String shopName) {
+        Optional<Seller> sellerOpt = shopService.findByShopName(shopName);
+        if (sellerOpt.isPresent()) {
+            return new ResponseEntity<>(sellerOpt.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<Seller> getSellerById(@PathVariable String id) {

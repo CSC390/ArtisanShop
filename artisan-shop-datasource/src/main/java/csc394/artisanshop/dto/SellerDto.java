@@ -27,6 +27,4 @@ public class SellerDto {
     @Column
     private String lastName;
 
-//    @OneToMany(mappedBy = "sellerDto")
-//    private List<ItemDto> items = new ArrayList<>();
 }

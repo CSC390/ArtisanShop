@@ -49,8 +49,28 @@ public class ShopServiceImpl implements ShopService {
     @Override
     @Transactional
     public Seller updateShop(Long id, Seller seller) {
-        SellerDto sellerDto = SellerMapper.toSellerDto(seller);
-        SellerDto updatedSellerDto = sellerDtoRepository.save(sellerDto);
+        Optional<SellerDto> existingSellerOpt = sellerDtoRepository.findById(id);
+
+        if (!existingSellerOpt.isPresent()) {
+            throw new IllegalArgumentException("Seller not found with id: " + id);
+        }
+
+        SellerDto existingSellerDto = existingSellerOpt.get();
+
+        if (seller.getSellerName() != null) {
+            existingSellerDto.setSellerName(seller.getSellerName());
+        }
+        if (seller.getSellerEmail() != null) {
+            existingSellerDto.setSellerEmail(seller.getSellerEmail());
+        }
+        if (seller.getFirstName() != null) {
+            existingSellerDto.setFirstName(seller.getFirstName());
+        }
+        if (seller.getLastName() != null) {
+            existingSellerDto.setLastName(seller.getLastName());
+        }
+
+        SellerDto updatedSellerDto = sellerDtoRepository.save(existingSellerDto);
         return SellerMapper.toSeller(updatedSellerDto);
     }
 
@@ -77,65 +97,11 @@ public class ShopServiceImpl implements ShopService {
 
     @Override
     @Transactional
-    public Item updateItemPrice(Long itemId, Double newPrice) {
-        Optional<ItemDto> optionalItem = itemDtoRepository.findById(itemId);
-        if (optionalItem.isPresent()) {
-            ItemDto itemDto = optionalItem.get();
-            itemDto.setPrice(newPrice);
-            ItemDto updatedItemDto = itemDtoRepository.save(itemDto);
-            return ItemMapper.toItem(updatedItemDto);
-        } else {
-            throw new IllegalArgumentException("Item with ID: " + itemId + " not found");
-        }
-    }
-    @Override
-    @Transactional
-    public List<Item> getAllItems() {
-        List<ItemDto> itemDto = itemDtoRepository.findAll();
-        return itemDto.stream()
-                .map(ItemMapper::toItem)
-                .collect(Collectors.toList());
-    }
-
-    @Override
-    @Transactional
-    public Item getItem(Long itemId) {
-        Optional<ItemDto> itemDtoOptional = itemDtoRepository.findById(itemId);
-        if (itemDtoOptional.isPresent()) {
-            ItemDto itemDto = itemDtoOptional.get();
-            itemDto.getImages().size();
-            return ItemMapper.toItem(itemDto);
-        } else {
-            throw new IllegalArgumentException("Item with ID: " + itemId + " not found");
-        }
-    }
-
-    @Override
-    @Transactional
-    public Item getItemWithImages(Long itemId) {
-        Optional<ItemDto> itemDtoOptional = itemDtoRepository.findByIdWithImages(itemId);
-        if (itemDtoOptional.isPresent()) {
-            ItemDto itemDto = itemDtoOptional.get();
-            return ItemMapper.toItem(itemDto);
-        } else {
-            throw new IllegalArgumentException("Item with ID: " + itemId + " not found");
-        }
-    }
-
-    @Override
-    @Transactional
-    public void deleteSeller(Long id) {
-        sellerDtoRepository.deleteById(id);
-    }
-
-    @Override
-    @Transactional
     public void removeItem(Long sellerId, Long itemId) {
         Optional<ItemDto> itemDtoOptional = itemDtoRepository.findById(itemId);
         if (!itemDtoOptional.isPresent() || !itemDtoOptional.get().getSellerDto().getId().equals(sellerId)) {
             throw new IllegalArgumentException("Item with ID: " + itemId + " not found or doesn't belong to the seller with ID: " + sellerId);
         }
-
         itemDtoRepository.deleteById(itemId);
     }
 
@@ -146,5 +112,28 @@ public class ShopServiceImpl implements ShopService {
         return itemDtos.stream()
                 .map(ItemMapper::toItem)
                 .collect(Collectors.toList());
+    }
+
+    public ItemDto updateItem(Long itemId, Item item) {
+        Optional<ItemDto> existingItemOpt = itemDtoRepository.findById(itemId);
+
+        if (!existingItemOpt.isPresent()) {
+            throw new IllegalArgumentException("Item not found with id: " + itemId);
+        }
+        ItemDto existingItem = existingItemOpt.get();
+
+        if (item.getItemName() != null) {
+            existingItem.setItemName(item.getItemName());
+        }
+        if (item.getDescription() != null) {
+            existingItem.setDescription(item.getDescription());
+        }
+        if (item.getPrice() != null) {
+            existingItem.setPrice(item.getPrice());
+        }
+        if (item.getQuantity() != null) {
+            existingItem.setQuantity(item.getQuantity());
+        }
+        return itemDtoRepository.save(existingItem);
     }
 }
