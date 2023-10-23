@@ -25,7 +25,8 @@ public class ImageDto {
     @Column
     private String description;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private ItemDto item;
+
 }

@@ -20,8 +20,9 @@ public class ItemDto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<ImageDto> images = new ArrayList<>();
+
 
     @Column
     private String itemName;
@@ -35,11 +36,17 @@ public class ItemDto {
     @Column
     private Double price;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category")
     private CategoryDto categoryDto;
 
     @ManyToOne
     @JoinColumn(name = "seller_id")
     private SellerDto sellerDto;
+
+    public void setImages(List<ImageDto> images) {
+        if (images != null) {
+            this.images = images;
+        }
+    }
 }

@@ -2,6 +2,7 @@ package csc394.artisanshop.impl;
 
 import csc394.artisanshop.datamapper.ItemMapper;
 import csc394.artisanshop.datamapper.SellerMapper;
+import csc394.artisanshop.dto.ImageDto;
 import csc394.artisanshop.dto.ItemDto;
 import csc394.artisanshop.dto.SellerDto;
 import csc394.artisanshop.entities.Item;
@@ -38,7 +39,6 @@ public class ShopServiceImpl implements ShopService {
         return SellerMapper.toSeller(savedSellerDto);
     }
 
-
     @Override
     @Transactional
     public Optional<Seller> findByShopName(String shopName) {
@@ -53,8 +53,9 @@ public class ShopServiceImpl implements ShopService {
         SellerDto updatedSellerDto = sellerDtoRepository.save(sellerDto);
         return SellerMapper.toSeller(updatedSellerDto);
     }
-    @Override
+
     @Transactional
+    @Override
     public Item addItem(Long sellerId, Item item) {
         Optional<SellerDto> sellerDtoOptional = sellerDtoRepository.findById(sellerId);
         if (!sellerDtoOptional.isPresent()) {
@@ -63,6 +64,13 @@ public class ShopServiceImpl implements ShopService {
         SellerDto sellerDto = sellerDtoOptional.get();
         ItemDto itemDto = ItemMapper.toItemDto(item);
         itemDto.setSellerDto(sellerDto);
+
+        if (itemDto.getImages() != null) {
+            for (ImageDto imageDto : itemDto.getImages()) {
+                imageDto.setItem(itemDto);
+            }
+        }
+
         ItemDto savedItemDto = itemDtoRepository.save(itemDto);
         return ItemMapper.toItem(savedItemDto);
     }
@@ -87,6 +95,31 @@ public class ShopServiceImpl implements ShopService {
         return itemDto.stream()
                 .map(ItemMapper::toItem)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public Item getItem(Long itemId) {
+        Optional<ItemDto> itemDtoOptional = itemDtoRepository.findById(itemId);
+        if (itemDtoOptional.isPresent()) {
+            ItemDto itemDto = itemDtoOptional.get();
+            itemDto.getImages().size();
+            return ItemMapper.toItem(itemDto);
+        } else {
+            throw new IllegalArgumentException("Item with ID: " + itemId + " not found");
+        }
+    }
+
+    @Override
+    @Transactional
+    public Item getItemWithImages(Long itemId) {
+        Optional<ItemDto> itemDtoOptional = itemDtoRepository.findByIdWithImages(itemId);
+        if (itemDtoOptional.isPresent()) {
+            ItemDto itemDto = itemDtoOptional.get();
+            return ItemMapper.toItem(itemDto);
+        } else {
+            throw new IllegalArgumentException("Item with ID: " + itemId + " not found");
+        }
     }
 
     @Override

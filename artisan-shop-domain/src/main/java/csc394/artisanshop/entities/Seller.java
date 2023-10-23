@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,5 +15,5 @@ public class Seller {
     private String sellerEmail;
     private String firstName;
     private String lastName;
-    private List<Item> itemsForSale;
+//    private List<Item> itemsForSale;
 }

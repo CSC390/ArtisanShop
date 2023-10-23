@@ -17,6 +17,6 @@ public class Item {
     private Double price;
     private ItemCategory itemCategory;
     private Integer quantity;
-    private List<Image> imageUrl;
+    private List<Image> imageUrls;
     private Seller seller;
 }

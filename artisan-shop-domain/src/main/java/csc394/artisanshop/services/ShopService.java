@@ -2,6 +2,7 @@ package csc394.artisanshop.services;
 
 import csc394.artisanshop.entities.Item;
 import csc394.artisanshop.entities.Seller;
+import jakarta.transaction.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,6 +38,12 @@ public interface ShopService {
     Item updateItemPrice(Long itemId, Double newPrice);
 
     List<Item> getAllItems();
+
+    @Transactional
+    Item getItem(Long itemId);
+
+    @Transactional
+    Item getItemWithImages(Long itemId);
 
     void deleteSeller(Long id);
 

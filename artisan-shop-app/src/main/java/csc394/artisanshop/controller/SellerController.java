@@ -37,30 +37,22 @@ public class SellerController {
         shopService.deleteSeller(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<Seller> getSellerById(@PathVariable String id) {
-        // Assuming the ShopService has a method called findByShopName
-        Optional<Seller> shopName = shopService.findByShopName(id);
-
-        if(shopName.isPresent()) {
-            return new ResponseEntity<>(shopName.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-    }
 
     @PostMapping("/{sellerId}/addItem")
     public ResponseEntity<Item> addItem(@PathVariable Long sellerId, @RequestBody Item item) {
-        item.setImageUrl(item.getImageUrl());
+        item.setImageUrls(item.getImageUrls());
         Item addedItem = shopService.addItem(sellerId, item);
         return new ResponseEntity<>(addedItem, HttpStatus.CREATED);
     }
 
-
-    @PutMapping("/{sellerId}/updateItem/{itemId}")
-    public ResponseEntity<Item> updateItemPrice(@PathVariable Long sellerId, @PathVariable Long itemId, @RequestBody Double newPrice) {
+    @PutMapping("/updateItem/{itemId}")
+    public ResponseEntity<Item> updateItemPrice( @PathVariable Long itemId, @RequestBody Double newPrice) {
         Item updatedItem = shopService.updateItemPrice(itemId, newPrice);
+        if (updatedItem == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(updatedItem, HttpStatus.OK);
+
     }
 
     @DeleteMapping("/{sellerId}/removeItem/{itemId}")
@@ -73,5 +65,15 @@ public class SellerController {
     public ResponseEntity<List<Item>> getSellerItems(@PathVariable Long sellerId) {
         List<Item> items = shopService.getSellerItems(sellerId);
         return new ResponseEntity<>(items, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Seller> getSellerById(@PathVariable String id) {
+        Optional<Seller> shopName = shopService.findByShopName(id);
+        if(shopName.isPresent()) {
+            return new ResponseEntity<>(shopName.get(), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 }
