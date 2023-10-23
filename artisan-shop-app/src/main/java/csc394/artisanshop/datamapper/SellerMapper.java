@@ -16,6 +16,9 @@ public class SellerMapper {
         sellerDto.setFirstName(seller.getFirstName());
         sellerDto.setLastName(seller.getLastName());
         sellerDto.setSellerName(seller.getSellerName());
+        sellerDto.setPhoneNumber(seller.getPhoneNumber());
+        sellerDto.setAddress(seller.getAddress());
+
         return sellerDto;
     }
 
@@ -30,6 +33,8 @@ public class SellerMapper {
         seller.setSellerName(sellerDto.getSellerName());
         seller.setFirstName(sellerDto.getFirstName());
         seller.setLastName(sellerDto.getLastName());
+        seller.setAddress(sellerDto.getAddress());
+        seller.setPhoneNumber(sellerDto.getPhoneNumber());
 
         return seller;
     }

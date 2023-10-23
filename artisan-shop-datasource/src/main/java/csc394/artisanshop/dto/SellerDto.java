@@ -1,13 +1,9 @@
 package csc394.artisanshop.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "sellers")
@@ -31,7 +27,10 @@ public class SellerDto {
     @Column
     private String lastName;
 
-    @OneToMany(mappedBy = "sellerDto")
-    @JsonIgnore
-    private List<ItemDto> items = new ArrayList<>();
+    @Column
+    private String phoneNumber;
+
+    @Column
+    private String address;
+
 }

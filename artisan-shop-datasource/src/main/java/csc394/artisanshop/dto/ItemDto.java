@@ -1,5 +1,6 @@
 package csc394.artisanshop.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,8 +21,10 @@ public class ItemDto {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @JsonBackReference
     private List<ImageDto> images = new ArrayList<>();
+
 
     @Column
     private String itemName;
@@ -35,11 +38,21 @@ public class ItemDto {
     @Column
     private Double price;
 
-    @ManyToOne
+    @Column
+    private String brand;
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category")
+    @JsonBackReference
     private CategoryDto categoryDto;
 
     @ManyToOne
     @JoinColumn(name = "seller_id")
     private SellerDto sellerDto;
+
+    public void setImages(List<ImageDto> images) {
+        if (images != null) {
+            this.images = images;
+        }
+    }
 }

@@ -14,9 +14,10 @@ public class Item {
     private Long id;
     private String itemName;
     private String description;
+    private String brand;
     private Double price;
     private ItemCategory itemCategory;
     private Integer quantity;
-    private List<Image> imageUrl;
+    private List<Image> imageUrls;
     private Seller seller;
 }
