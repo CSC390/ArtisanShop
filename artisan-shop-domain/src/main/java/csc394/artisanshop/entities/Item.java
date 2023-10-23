@@ -14,6 +14,7 @@ public class Item {
     private Long id;
     private String itemName;
     private String description;
+    private String brand;
     private Double price;
     private ItemCategory itemCategory;
     private Integer quantity;

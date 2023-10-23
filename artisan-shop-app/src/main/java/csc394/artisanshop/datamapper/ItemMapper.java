@@ -21,6 +21,7 @@ public class ItemMapper {
         itemDto.setPrice(item.getPrice());
         itemDto.setQuantity(item.getQuantity());
         itemDto.setSellerDto(SellerMapper.toSellerDto(item.getSeller()));
+        itemDto.setBrand(item.getBrand());
         itemDto.setCategoryDto(CategoryMapper.toCategoryDto(item.getItemCategory()));
 
         List<ImageDto> imageDtos = item.getImageUrls() != null
@@ -45,6 +46,7 @@ public class ItemMapper {
         item.setPrice(itemDto.getPrice());
         item.setQuantity(itemDto.getQuantity());
         item.setSeller(SellerMapper.toSeller(itemDto.getSellerDto()));
+        item.setBrand(itemDto.getBrand());
         item.setItemCategory(CategoryMapper.toCategory(itemDto.getCategoryDto()));
 
         List<Image> images = itemDto.getImages() != null

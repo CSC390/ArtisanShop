@@ -27,4 +27,10 @@ public class SellerDto {
     @Column
     private String lastName;
 
+    @Column
+    private String phoneNumber;
+
+    @Column
+    private String address;
+
 }

@@ -15,5 +15,7 @@ public class Seller {
     private String sellerEmail;
     private String firstName;
     private String lastName;
-//    private List<Item> itemsForSale;
+    private String phoneNumber;
+    private String address;
+
 }

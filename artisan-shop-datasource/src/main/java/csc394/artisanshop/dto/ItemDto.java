@@ -38,6 +38,9 @@ public class ItemDto {
     @Column
     private Double price;
 
+    @Column
+    private String brand;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category")
     @JsonBackReference

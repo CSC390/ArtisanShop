@@ -16,12 +16,9 @@ public class SellerMapper {
         sellerDto.setFirstName(seller.getFirstName());
         sellerDto.setLastName(seller.getLastName());
         sellerDto.setSellerName(seller.getSellerName());
-//        if (seller.getItemsForSale() != null) {
-//            List<ItemDto> items = seller.getItemsForSale().stream()
-//                    .map(ItemMapper::toItemDto)
-//                    .collect(Collectors.toList());
-//            sellerDto.setItems(items);
-//        }
+        sellerDto.setPhoneNumber(seller.getPhoneNumber());
+        sellerDto.setAddress(seller.getAddress());
+
         return sellerDto;
     }
 
@@ -36,13 +33,9 @@ public class SellerMapper {
         seller.setSellerName(sellerDto.getSellerName());
         seller.setFirstName(sellerDto.getFirstName());
         seller.setLastName(sellerDto.getLastName());
+        seller.setAddress(sellerDto.getAddress());
+        seller.setPhoneNumber(sellerDto.getPhoneNumber());
 
-//        if (seller.getItemsForSale() != null) {
-//            List<Item> itemsForSale = sellerDto.getItems().stream()
-//                    .map(ItemMapper::toItem)
-//                    .collect(Collectors.toList());
-//            seller.setItemsForSale(itemsForSale);
-//        }
         return seller;
     }
 }
