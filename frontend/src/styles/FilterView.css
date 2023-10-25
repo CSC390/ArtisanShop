@@ -1,0 +1,67 @@
+/* Add App.css styles */
+@import "../App.css";
+
+/* Adjust the padding for the filter top */
+.filter-top {
+  padding: 24px 0;
+}
+
+/* Style the filter content */
+.filter-top-content {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+}
+
+/* Style the sorting section */
+.filter-top-sort {
+  display: flex;
+  align-items: center;
+}
+
+.filter-top-sort p {
+  margin-right: 10px;
+  line-height: 1; /* Added to vertically center the text */
+}
+
+.filter-select {
+  opacity: 0.9;
+  padding: 5px;
+  vertical-align: middle; /* Added to vertically center the select box */
+}
+
+/* Style the view buttons section */
+.filter-top-view {
+  display: flex;
+  align-items: center;
+}
+
+.filter-top-view p {
+  margin-right: 10px;
+  line-height: 1; /* Added to vertically center the text */
+}
+
+.grid-btn,
+.list-btn {
+  margin-left: 8px;
+  transition: var(--transition-default);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 16px;
+}
+
+.grid-btn:hover,
+.list-btn:hover {
+  color: var(--clr-dark);
+}
+
+/* Adjust button icon size */
+.grid-btn svg,
+.list-btn svg {
+  width: 20px;
+  height: 20px;
+}

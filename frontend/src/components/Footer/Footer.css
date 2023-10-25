@@ -1,0 +1,83 @@
+@import "../../App.css";
+
+.footer {
+  /* margin-top: 60px; */
+  background: #96826a;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.footer a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  color: var(--clr-white);
+}
+
+/* Footer Columns */
+.footer-col {
+  padding: 0 30px;
+  margin-bottom: 20px;
+}
+
+.business-hours-list li {
+  margin-bottom: 10px;
+}
+
+.intro {
+  margin-bottom: 15px;
+}
+
+/* Footer Contact List */
+.footer-contact-list .item {
+  position: relative;
+  margin-bottom: 15px;
+  padding-left: 40px;
+  height: 5px;
+}
+
+.custom-icon {
+  position: absolute;
+  font-size: 22px;
+  color: var(--clr-white);
+  left: 0;
+}
+
+/* Bottom Bar */
+.bottombar {
+  background: #695b4a;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.bottombar a {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.bottombar a:hover {
+  color: var(--clr-white);
+}
+
+/* Copyright */
+.copyright {
+  font-size: 13px;
+}
+
+/* Footer Menu */
+.footer-menu {
+  margin-top: 15px;
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-menu li {
+  margin-bottom: 5px;
+}
+
+.footer-menu a {
+  color: rgba(255, 255, 255, 0.3);
+  text-decoration: none;
+}

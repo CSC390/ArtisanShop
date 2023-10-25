@@ -1,0 +1,10 @@
+@import "../App.css";
+
+.sc-banner {
+  height: 50vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 4px solid yellow;
+}

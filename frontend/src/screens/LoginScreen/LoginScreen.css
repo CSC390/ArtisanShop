@@ -1,0 +1,11 @@
+/* Add this CSS to your global CSS or a specific CSS file for this component */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+.full-height-container {
+  height: 70%;
+}
