@@ -39,7 +39,7 @@ const Footer = () => {
           <Col lg={4} md={6} xs={12} className="contact-us-col">
             <h3 className="col-title text-center pb-lg-3">Contact Us</h3>
             <ul className="footer-contact-list list-unstyled">
-              <li className="item">
+              <li className="product">
                 <span>
                   <FaPhone />
                 </span>
@@ -47,7 +47,7 @@ const Footer = () => {
                   <a href="tel:01234555666">01234 555 666</a>
                 </span>
               </li>
-              <li className="item">
+              <li className="product">
                 <span>
                   <FaEnvelope />
                 </span>
@@ -68,22 +68,22 @@ const Footer = () => {
 
             <div className="social-container">
               <ul className="list-inline social-list">
-                <li className="list-inline-item social-item">
+                <li className="list-inline-product social-product">
                   <a href="#http://csc394-blue-frogs-hub.s3-website-us-east-1.amazonaws.com/">
                     <FaInstagram />
                   </a>
                 </li>
-                <li className="list-inline-item social-item">
+                <li className="list-inline-product social-product">
                   <a href="http://csc394-blue-frogs-hub.s3-website-us-east-1.amazonaws.com/">
                     <FaGithub />
                   </a>
                 </li>
-                <li className="list-inline-item social-item">
+                <li className="list-inline-product social-product">
                   <a href="http://csc394-blue-frogs-hub.s3-website-us-east-1.amazonaws.com/">
                     <FaTwitter />
                   </a>
                 </li>
-                <li className="list-inline-item social-item">
+                <li className="list-inline-product social-product">
                   <a href="http://csc394-blue-frogs-hub.s3-website-us-east-1.amazonaws.com/">
                     <FaFacebook />
                   </a>

@@ -153,11 +153,11 @@ export default function ProductForm({
             ))}
           {/* </ReactSortable> */}
           {isUploading && (
-            <div className="h-24 d-flex align-items-center">
+            <div className="h-24 d-flex align-products-center">
               <Loader />
             </div>
           )}
-          <label className="w-24 h-24 cursor-pointer text-center d-flex flex-column align-items-center justify-content-center text-sm gap-1 text-primary rounded-sm bg-white shadow-sm border border-primary">
+          <label className="w-24 h-24 cursor-pointer text-center d-flex flex-column align-products-center justify-content-center text-sm gap-1 text-primary rounded-sm bg-white shadow-sm border border-primary">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

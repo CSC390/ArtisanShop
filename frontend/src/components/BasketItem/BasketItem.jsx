@@ -6,7 +6,7 @@ import { BasketContext } from "../../context/basketContext";
 import PropTypes from "prop-types";
 import { useContext } from "react";
 
-const BasketItem = ({ item }) => {
+const BasketItem = ({ product }) => {
   const {
     dispatch: basketDispatch,
     addQtyItem,
@@ -18,74 +18,74 @@ const BasketItem = ({ item }) => {
 
   const singleCheckoutHandler = (event) => {
     if (event.target.checked) {
-      addToCheckout(basketDispatch, item?.id);
+      addToCheckout(basketDispatch, product?.id);
     } else {
-      removeFromCheckout(basketDispatch, item?.id);
+      removeFromCheckout(basketDispatch, product?.id);
     }
   };
 
   return (
-    <div className="basket-list-item grid px-3 py-3" key={item.id}>
-      <div className="checkbox-item py-3">
+    <div className="basket-list-product grid px-3 py-3" key={product.id}>
+      <div className="checkbox-product py-3">
         <div className="checkbox-icon">
           <input
             type="checkbox"
             className="form-control"
             onChange={singleCheckoutHandler}
-            checked={item.checkoutStatus}
+            checked={product.checkoutStatus}
           />
         </div>
       </div>
 
-      <div className="basket-list-item-info grid">
-        <div className="item-info-img">
+      <div className="basket-list-product-info grid">
+        <div className="product-info-img">
           <img
-            src={item?.productImageUrl}
-            alt={item?.productName}
+            src={product?.productImageUrl}
+            alt={product?.productName}
             className="img-cover"
           />
         </div>
-        <div className="item-info-details py-2">
-          <div className="item-info-details-top">
-            <h4>{item?.productName}</h4>
+        <div className="product-info-details py-2">
+          <div className="product-info-details-top">
+            <h4>{product?.productName}</h4>
             <button
               type="button"
               className="remove-btn"
-              onClick={() => removeFromBasket(basketDispatch, item.id)}
+              onClick={() => removeFromBasket(basketDispatch, product.id)}
             >
               <BsTrash />
             </button>
           </div>
 
           <div className="flex align-center flex-wrap py-1">
-            <span className="fs-13 text-dark">Brand: {item?.productBrand}</span>
+            <span className="fs-13 text-dark">Brand: {product?.productBrand}</span>
             <span className="mx-3 fs-13 text-dark">
-              Category: {item?.categories[0].categoryName}
+              Category: {product?.categories[0].categoryName}
             </span>
           </div>
 
           <div className="flex align-center justify-between">
             <span className="fw-7 fs-17 text-yellow">
-              ${item?.productPrice}
+              ${product?.productPrice}
             </span>
             <div className="quantity">
               <div className="quantity-toggle flex">
                 <button
                   className={`qty-dec flex align-center justify-center ${
-                    item?.quantity === 1 ? "active" : ""
+                    product?.quantity === 1 ? "active" : ""
                   }`}
-                  onClick={() => minusQtyItem(basketDispatch, item?.id)}
+                  onClick={() => minusQtyItem(basketDispatch, product?.id)}
                 >
                   <AiOutlineMinus size={14} />
                 </button>
                 <div className="qty-value flex align-center justify-center fs-14 mx-2">
-                  {item?.quantity}
+                  {product?.quantity}
                 </div>
                 <button
                   className={`qty-inc flex align-center justify-center ${
-                    item?.quantity === item?.stock ? "active" : ""
+                    product?.quantity === product?.stock ? "active" : ""
                   }`}
-                  onClick={() => addQtyItem(basketDispatch, item?.id)}
+                  onClick={() => addQtyItem(basketDispatch, product?.id)}
                 >
                   <AiOutlinePlus size={14} />
                 </button>
@@ -95,7 +95,7 @@ const BasketItem = ({ item }) => {
 
           <div className="fs-14">
             <span className="fw-6">Total: </span>
-            {formatPrice(item?.totalPrice)}
+            {formatPrice(product?.totalPrice)}
           </div>
         </div>
       </div>
@@ -106,5 +106,5 @@ const BasketItem = ({ item }) => {
 export default BasketItem;
 
 BasketItem.propTypes = {
-  item: PropTypes.object,
+  product: PropTypes.object,
 };

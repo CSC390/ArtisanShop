@@ -21,14 +21,14 @@ public class ImageDto {
     private Long id;
 
     @Column
-    private String url;
+    private String images;
 
     @Column
     private String description;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "item_id")
+    @JoinColumn(name = "product_id")
     @JsonBackReference
-    private ItemDto item;
+    private ProductDto product;
 
 }

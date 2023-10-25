@@ -36,8 +36,8 @@ const ShopBar = () => {
       </Navbar>
 
       <Carousel id="header-carousel" ride="carousel">
-        <Carousel.Item className="item item-1" interval={8000}>
-          <Carousel.Caption className="d-flex flex-column align-items-center justify-content-center">
+        <Carousel.Item className="product product-1" interval={8000}>
+          <Carousel.Caption className="d-flex flex-column align-products-center justify-content-center">
             <div className="p-3" style={{ maxWidth: "700px" }}>
               <h4 className="text-light text-uppercase font-weight-medium mb-3">
                 10% Off Your First Order
@@ -52,8 +52,8 @@ const ShopBar = () => {
           </Carousel.Caption>
         </Carousel.Item>
 
-        <Carousel.Item className="item item-2" interval={8000}>
-          <Carousel.Caption className="d-flex flex-column align-items-center justify-content-center">
+        <Carousel.Item className="product product-2" interval={8000}>
+          <Carousel.Caption className="d-flex flex-column align-products-center justify-content-center">
             <div className="p-3" style={{ maxWidth: "700px" }}>
               <h4 className="text-light text-uppercase font-weight-medium mb-3">
                 10% Off Your First Order

@@ -26,6 +26,6 @@ public class CategoryDto {
 
     @OneToMany(mappedBy = "categoryDto")
     @JsonManagedReference
-    private List<ItemDto> items = new ArrayList<>();
+    private List<ProductDto> items = new ArrayList<>();
 
 }

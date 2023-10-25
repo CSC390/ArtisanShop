@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class ItemCategory {
+public class Category {
     private Long id;
     private String categoryName;
 }

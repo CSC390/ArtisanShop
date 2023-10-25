@@ -40,7 +40,7 @@ const SupportHeader = () => {
     <nav className="">
       <div className="navbar-main pt-3 bg-beaverC">
         <div className="container">
-          <div className="row navbar-main-top align-items-center justify-content-between">
+          <div className="row navbar-main-top align-products-center justify-content-between">
             <div className="col-auto">
               <Link to="/" className="navbar-brand">
                 <span className="text-olive fs-26 fw-6">Artisan </span>
@@ -49,7 +49,7 @@ const SupportHeader = () => {
             </div>
 
             <div className="col-auto">
-              <div className="navbar-basket text-white d-flex align-items-center">
+              <div className="navbar-basket text-white d-flex align-products-center">
                 <Link to="/cart" className="basket-btn">
                   <HiShoppingBag size={29} />
                   <span className="basket-count flex align-center justify-center">
@@ -88,10 +88,10 @@ const SupportHeader = () => {
               >
                 {categories.map((category, idx) => {
                   return (
-                    <li className="category-item" key={idx}>
+                    <li className="category-product" key={idx}>
                       <Link
                         to={`category/${category}`}
-                        className="category-item-link text-uppercase text-dark fs-12"
+                        className="category-product-link text-uppercase text-dark fs-12"
                       >
                         {category?.replace("-", " ")}
                       </Link>
@@ -104,7 +104,7 @@ const SupportHeader = () => {
               <ul className="horizontal-nav flex align-center">
                 {categories.slice(0, 6).map((category, idx) => {
                   return (
-                    <li className="nav-item" key={idx}>
+                    <li className="nav-product" key={idx}>
                       <Link
                         to={`/category/${category}`}
                         className="nav-link no-wrap"
