@@ -12,7 +12,7 @@ const Categories = () => {
     <Col lg={3} className="d-none d-lg-block">
       <Button
         variant="primary"
-        className="shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100"
+        className="shadow-none d-flex align-products-center justify-content-between bg-primary text-white w-100"
         onClick={toggleCollapse}
         aria-controls="categories-collapse"
         aria-expanded={!isCollapsed}

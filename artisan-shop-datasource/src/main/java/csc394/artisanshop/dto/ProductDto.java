@@ -11,35 +11,34 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "items")
+@Table(name = "products")
 @Data
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ItemDto {
+public class ProductDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     @JsonBackReference
     private List<ImageDto> images = new ArrayList<>();
 
+    @Column
+    private String productName;
 
     @Column
-    private String itemName;
+    private String productDetails;
+
+    @Column
+    private String productBrand;
+
+    @Column
+    private Double productPrice;
 
     @Column
     private Integer quantity;
-
-    @Column
-    private String description;
-
-    @Column
-    private Double price;
-
-    @Column
-    private String brand;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "category")

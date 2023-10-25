@@ -1,15 +1,16 @@
 package csc394.artisanshop.impl;
 
-import csc394.artisanshop.datamapper.ItemMapper;
+import csc394.artisanshop.datamapper.ProductMapper;
 import csc394.artisanshop.datamapper.SellerMapper;
 import csc394.artisanshop.dto.ImageDto;
-import csc394.artisanshop.dto.ItemDto;
+import csc394.artisanshop.dto.ProductDto;
 import csc394.artisanshop.dto.SellerDto;
-import csc394.artisanshop.entities.Item;
+import csc394.artisanshop.entities.Product;
 import csc394.artisanshop.entities.Seller;
-import csc394.artisanshop.repositories.ItemDtoRepository;
+import csc394.artisanshop.repositories.ProductDtoRepository;
 import csc394.artisanshop.repositories.SellerDtoRepository;
 import csc394.artisanshop.services.ShopService;
+import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,13 +23,17 @@ import java.util.stream.Collectors;
 public class ShopServiceImpl implements ShopService {
 
     private final SellerDtoRepository sellerDtoRepository;
-    private final ItemDtoRepository itemDtoRepository;
+    private final ProductDtoRepository productDtoRepository;
+
+    private final EntityManager entityManager;
 
     @Autowired
     public ShopServiceImpl(final SellerDtoRepository sellerDtoRepository,
-                           final ItemDtoRepository itemDtoRepository) {
+                           final ProductDtoRepository productDtoRepository,
+                           final EntityManager entityManager) {
         this.sellerDtoRepository = sellerDtoRepository;
-        this.itemDtoRepository = itemDtoRepository;
+        this.productDtoRepository = productDtoRepository;
+        this.entityManager = entityManager;
     }
 
     @Transactional
@@ -76,64 +81,69 @@ public class ShopServiceImpl implements ShopService {
 
     @Transactional
     @Override
-    public Item addItem(Long sellerId, Item item) {
+    public Product addItem(Long sellerId, Product product) {
         Optional<SellerDto> sellerDtoOptional = sellerDtoRepository.findById(sellerId);
         if (!sellerDtoOptional.isPresent()) {
             throw new IllegalArgumentException("Seller with ID: " + sellerId + " not found");
         }
         SellerDto sellerDto = sellerDtoOptional.get();
-        ItemDto itemDto = ItemMapper.toItemDto(item);
-        itemDto.setSellerDto(sellerDto);
+        ProductDto productDto = ProductMapper.toProductDto(product);
+        productDto.setSellerDto(sellerDto);
 
-        if (itemDto.getImages() != null) {
-            for (ImageDto imageDto : itemDto.getImages()) {
-                imageDto.setItem(itemDto);
+        if (productDto.getImages() != null) {
+            for (ImageDto imageDto : productDto.getImages()) {
+                imageDto.setProduct(productDto);
             }
         }
 
-        ItemDto savedItemDto = itemDtoRepository.save(itemDto);
-        return ItemMapper.toItem(savedItemDto);
+        ProductDto savedProductDto = productDtoRepository.save(productDto);
+        return ProductMapper.toProduct(savedProductDto);
     }
+
 
     @Override
     @Transactional
     public void removeItem(Long sellerId, Long itemId) {
-        Optional<ItemDto> itemDtoOptional = itemDtoRepository.findById(itemId);
+        Optional<ProductDto> itemDtoOptional = productDtoRepository.findById(itemId);
         if (!itemDtoOptional.isPresent() || !itemDtoOptional.get().getSellerDto().getId().equals(sellerId)) {
             throw new IllegalArgumentException("Item with ID: " + itemId + " not found or doesn't belong to the seller with ID: " + sellerId);
         }
-        itemDtoRepository.deleteById(itemId);
+        productDtoRepository.deleteById(itemId);
     }
 
     @Override
     @Transactional
-    public List<Item> getSellerItems(Long sellerId) {
-        List<ItemDto> itemDtos = itemDtoRepository.findBySellerDto_Id(sellerId);
-        return itemDtos.stream()
-                .map(ItemMapper::toItem)
+    public List<Product> getSellerItems(Long sellerId) {
+        List<ProductDto> productDtos = productDtoRepository.findBySellerDto_Id(sellerId);
+        return productDtos.stream()
+                .map(ProductMapper::toProduct)
                 .collect(Collectors.toList());
     }
 
-    public ItemDto updateItem(Long itemId, Item item) {
-        Optional<ItemDto> existingItemOpt = itemDtoRepository.findById(itemId);
+    @Override
+    @Transactional
+    public Product updateItem(Long itemId, Product product) {
+        Optional<ProductDto> existingItemOpt = productDtoRepository.findById(itemId);
 
         if (!existingItemOpt.isPresent()) {
             throw new IllegalArgumentException("Item not found with id: " + itemId);
         }
-        ItemDto existingItem = existingItemOpt.get();
+        ProductDto existingItem = existingItemOpt.get();
 
-        if (item.getItemName() != null) {
-            existingItem.setItemName(item.getItemName());
+        if (product.getProductName() != null) {
+            existingItem.setProductName(product.getProductName());
         }
-        if (item.getDescription() != null) {
-            existingItem.setDescription(item.getDescription());
+        if (product.getProductDetails() != null) {
+            existingItem.setProductDetails(product.getProductDetails());
         }
-        if (item.getPrice() != null) {
-            existingItem.setPrice(item.getPrice());
+        if (product.getProductPrice() != null) {
+            existingItem.setProductPrice(product.getProductPrice());
         }
-        if (item.getQuantity() != null) {
-            existingItem.setQuantity(item.getQuantity());
+        if (product.getQuantity() != null) {
+            existingItem.setQuantity(product.getQuantity());
         }
-        return itemDtoRepository.save(existingItem);
+        ProductDto updatedProductDto = productDtoRepository.save(existingItem);
+        entityManager.flush();
+        return ProductMapper.toProduct(updatedProductDto);
     }
 }

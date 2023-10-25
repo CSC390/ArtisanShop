@@ -1,7 +1,6 @@
 package csc394.artisanshop.services;
 
-import csc394.artisanshop.dto.ItemDto;
-import csc394.artisanshop.entities.Item;
+import csc394.artisanshop.entities.Product;
 import csc394.artisanshop.entities.Seller;
 
 import java.util.List;
@@ -15,11 +14,11 @@ public interface ShopService {
 
     Seller updateShop(Long id, Seller seller);
 
-    Item addItem(Long sellerId, Item item);
+    Product addItem(Long sellerId, Product product);
 
     void removeItem(Long sellerId, Long itemId);
 
-    List<Item> getSellerItems(Long sellerId);
+    List<Product> getSellerItems(Long sellerId);
 
-    ItemDto updateItem(Long itemId, Item item);
+    Product updateItem(Long itemId, Product product);
 }

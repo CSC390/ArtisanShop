@@ -1,6 +1,6 @@
 package csc394.artisanshop.controller;
 
-import csc394.artisanshop.entities.Item;
+import csc394.artisanshop.entities.Product;
 import csc394.artisanshop.entities.Seller;
 import csc394.artisanshop.services.ShopService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,10 +33,10 @@ public class SellerController {
     }
 
     @PostMapping("/{sellerId}/addItem")
-    public ResponseEntity<Item> addItem(@PathVariable Long sellerId, @RequestBody Item item) {
-        item.setImageUrls(item.getImageUrls());
-        Item addedItem = shopService.addItem(sellerId, item);
-        return new ResponseEntity<>(addedItem, HttpStatus.CREATED);
+    public ResponseEntity<Product> addItem(@PathVariable Long sellerId, @RequestBody Product product) {
+        product.setImages(product.getImages());
+        Product addedProduct = shopService.addItem(sellerId, product);
+        return new ResponseEntity<>(addedProduct, HttpStatus.CREATED);
     }
 
     @DeleteMapping("/{sellerId}/removeItem/{itemId}")
@@ -46,9 +46,9 @@ public class SellerController {
     }
 
     @GetMapping("/{sellerId}/items")
-    public ResponseEntity<List<Item>> getSellerItems(@PathVariable Long sellerId) {
-        List<Item> items = shopService.getSellerItems(sellerId);
-        return new ResponseEntity<>(items, HttpStatus.OK);
+    public ResponseEntity<List<Product>> getSellerItems(@PathVariable Long sellerId) {
+        List<Product> products = shopService.getSellerItems(sellerId);
+        return new ResponseEntity<>(products, HttpStatus.OK);
     }
 
     @GetMapping("/seller/{shopName}")

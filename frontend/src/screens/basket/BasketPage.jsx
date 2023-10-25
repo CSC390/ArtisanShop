@@ -36,7 +36,7 @@ const BasketPage = () => {
       <div className="container my-5">
         <div className="container-fluid border bg-white mb-5 mt-5">
           <div
-            className="d-flex flex-column align-items-center justify-content-center"
+            className="d-flex flex-column align-products-center justify-content-center"
             style={{ minHeight: "130px" }}
           >
             <h1 className="font-weight-semi-bold text-uppercase mb-3">
@@ -71,7 +71,7 @@ const BasketPage = () => {
                 </h2>
 
                 <div className="flex align-center justify-between">
-                  <div className="checkbox-item flex py-3">
+                  <div className="checkbox-product flex py-3">
                     <div className="checkbox-icon flex align-center">
                       <input
                         type="checkbox"
@@ -81,7 +81,7 @@ const BasketPage = () => {
                         checked={checkoutAll}
                       />
                     </div>
-                    <p className="form-text">Select all items</p>
+                    <p className="form-text">Select all products</p>
                   </div>
                   <button
                     type="button"
@@ -95,7 +95,7 @@ const BasketPage = () => {
 
               <div className="basket-list bg-white my-3">
                 {basket.map((basketItem) => {
-                  return <BasketItem item={basketItem} key={basketItem.id} />;
+                  return <BasketItem product={basketItem} key={basketItem.id} />;
                 })}
               </div>
             </div>

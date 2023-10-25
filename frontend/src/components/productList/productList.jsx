@@ -18,10 +18,10 @@ const ProductList = ({ products }) => {
             return (
               <Link
                 to={`/products/${product?.id}`}
-                className="product-item"
+                className="product-product"
                 key={product?.id}
               >
-                <div className="product-item-img">
+                <div className="product-product-img">
                   <img
                     src={product?.productImageUrl}
                     alt={product?.productName}
@@ -32,7 +32,7 @@ const ProductList = ({ products }) => {
                     <span>%</span>
                   </div>
                 </div>
-                <div className="product-item-body">
+                <div className="product-product-body">
                   <span className="product-category">
                     {product?.categories?.[0]?.categoryName}
                   </span>
@@ -47,7 +47,7 @@ const ProductList = ({ products }) => {
                     </span>
                   </div>
 
-                  {/* <div className="product-item-bottom fs-12 flex align-center">
+                  {/* <div className="product-product-bottom fs-12 flex align-center">
                     <div>
                       <span className="fw-6">Stock:</span> {product?.stock}
                     </div>

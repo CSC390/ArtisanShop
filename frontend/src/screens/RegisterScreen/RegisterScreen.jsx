@@ -47,7 +47,7 @@ const RegisterScreen = () => {
   return (
     <div className="full-height-container">
       <Container className="h-100">
-        <Row className="justify-content-center align-items-center h-100">
+        <Row className="justify-content-center align-products-center h-100">
           <Col xs={12} sm={10} md={8} lg={12}>
             <FormContainer>
               <h1 className="text-center">Sign Up</h1>

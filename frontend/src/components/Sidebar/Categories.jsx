@@ -32,7 +32,7 @@ const Categories = () => {
   return (
     <Col lg={3} className={`sidebar pt-3 ${isSidebarOn ? "" : "hide-sidebar"}`}>
       <Button
-        className="shadow-none d-flex align-items-center yes justify-content-between w-100"
+        className="shadow-none d-flex align-products-center yes justify-content-between w-100"
         onClick={toggleSidebar}
         style={{ height: "65px", marginTop: "-1px", padding: "0 30px" }}
       >
