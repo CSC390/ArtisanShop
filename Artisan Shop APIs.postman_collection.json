@@ -1,0 +1,444 @@
+{
+	"info": {
+		"_postman_id": "ec3690a7-17b5-4a62-aa67-745a3c9ef02a",
+		"name": "Artisan Shop APIs",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28812507"
+	},
+	"item": [
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "localhost:8080/api/products/add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productName\": \"iPhone 15 Pro Max\",\n    \"productBrand\": \"Apple\",\n    \"productDetails\": \"The 2023 iPhone 15 Pro models feature USB-C instead of Lightning, new zoom camera technology, A17 Pro chips, and more.\", \n    \"productPrice\": 1300,\n    \"stock\": 10,\n    \"productImageUrl\": \"https://i.dummyjson.com/data/products/1/thumbnail.jpg\",\n    \"images\": [\n        \"https://i.dummyjson.com/data/products/1/1.jpg\",\n        \"https://i.dummyjson.com/data/products/1/2.jpg\",\n        \"https://i.dummyjson.com/data/products/1/3.jpg\",\n        \"https://i.dummyjson.com/data/products/1/4.jpg\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/products/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/products/add-2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"productName\": \"Macbook Pro M2\",\n    \"productBrand\": \"Apple\",\n    \"productDetails\": \"The 2023 Macbook Pro M2 models feature USB-C instead of Lightning, M2 Pro chips, and more.\", \n    \"productPrice\": 2500,\n    \"stock\": 10,\n    \"productImageUrl\": \"https://i.dummyjson.com/data/products/12/thumbnail.jpg\",\n    \"images\": [\n        \"https://i.dummyjson.com/data/products/12/1.jpg\",\n        \"https://i.dummyjson.com/data/products/12/2.jpg\",\n        \"https://i.dummyjson.com/data/products/12/3.jpg\",\n        \"https://i.dummyjson.com/data/products/12/4.jpg\"\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/products/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/products/getAll",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/products/getAll",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/products/getById/1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/products/getById/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"getById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/products/getByProductName/{productName}",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/products/getByProductName/iPhone 15 Pro Max",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"getByProductName",
+								"iPhone 15 Pro Max"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/products/deleteById/1",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/products/deleteById/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"deleteById",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/products/getDto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/products/getDto",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"getDto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/products/update-product-details",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": 1,\r\n    \"productDetails\": \"This is an update to details section.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/products/update-product-details",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"products",
+								"update-product-details"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "localhost:8080/api/categorys/add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"categoryName\": \"Test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/categorys/add",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categorys",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/categorys/getAll",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/categorys/getAll",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categorys",
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/categorys/getCategories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/categorys/getCategories",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categorys",
+								"getCategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/categorys/getCategoriesIds",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/categorys/getCategoriesIds",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categorys",
+								"getCategoriesIds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/categorys/delete/12",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/api/categorys/delete/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categorys",
+								"delete",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/categorys/edit/12",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"categoryName\": \"JSON\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/categorys/edit/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categorys",
+								"edit",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/categorys/{categoryId}/addProduct/{productId}",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": 1,\r\n    \"categoryId\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/categorys/1/addProduct/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categorys",
+								"1",
+								"addProduct",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "localhost:8080/api/categorys/{categoryId}/removeProduct/{productId} Copy",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\": 1,\r\n    \"categoryId\": 12\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/categorys/1/removeProduct/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"categorys",
+								"1",
+								"removeProduct",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "localhost:8080/api/categorys/findByCategoryName/{categoryName}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/upl/upload",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"upl",
+						"upload"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
