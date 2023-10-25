@@ -123,43 +123,47 @@ resource "aws_db_subnet_group" "as-db-subnet-group" {
   subnet_ids = [aws_subnet.as-public-subnet-1.id] # Use the existing subnet created in step 4
 }
 
-#12. Create an RDS instance
-resource "aws_db_instance" "as-db-instance" {
-  allocated_storage    = 20
-  storage_type         = "gp2"
-  engine               = "mysql"
-  engine_version       = "8.0.34"
-  instance_class       = "db.t3.micro"
-  db_name              = "artisan-marketplace"
-  username             = "admin"
-  password             = try(string(env("TF_VAR_RDS_key")), "")
-  db_subnet_group_name = aws_db_subnet_group.as-db-subnet-group.name
-  parameter_group_name = "default.mysql5.7"
-  skip_final_snapshot  = true
 
-}
 
-#14. Create a RDS security group
-resource "aws_security_group" "as-db-sg" {
-  name        = "as-db-sg"
-  description = "Allow access to db"
-  vpc_id      = aws_vpc.as-vpc.id
+#12. Create an Relational Database Service instance
+## This infra. will not be implemented because of time constrait
+#
+# resource "aws_db_instance" "as-db-instance" {
+#   allocated_storage    = 20
+#   storage_type         = "gp2"
+#   engine               = "mysql"
+#   engine_version       = "8.0.34"
+#   instance_class       = "db.t3.micro"
+#   db_name              = "artisan-marketplace"
+#   username             = "admin"
+#   password             = try(string(env("TF_VAR_RDS_key")), "")
+#   db_subnet_group_name = aws_db_subnet_group.as-db-subnet-group.name
+#   parameter_group_name = "default.mysql5.7"
+#   skip_final_snapshot  = true
 
-  ingress {
-    description      = "MySQL/Aurora"
-    from_port        = 3306
-    to_port          = 3306
-    protocol         = "tcp"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-    security_groups  = [aws_security_group.as-security-groups]
-  }
+# }
 
-  egress {
-    from_port        = 0
-    to_port          = 0
-    protocol         = "-1"
-    cidr_blocks      = ["0.0.0.0/0"]
-    ipv6_cidr_blocks = ["::/0"]
-  }
-}
+# #14. Create a RDS security group
+# resource "aws_security_group" "as-db-sg" {
+#   name        = "as-db-sg"
+#   description = "Allow access to db"
+#   vpc_id      = aws_vpc.as-vpc.id
+
+#   ingress {
+#     description      = "MySQL/Aurora"
+#     from_port        = 3306
+#     to_port          = 3306
+#     protocol         = "tcp"
+#     cidr_blocks      = ["0.0.0.0/0"]
+#     ipv6_cidr_blocks = ["::/0"]
+#     security_groups  = [aws_security_group.as-security-groups]
+#   }
+
+#   egress {
+#     from_port        = 0
+#     to_port          = 0
+#     protocol         = "-1"
+#     cidr_blocks      = ["0.0.0.0/0"]
+#     ipv6_cidr_blocks = ["::/0"]
+#   }
+#}
