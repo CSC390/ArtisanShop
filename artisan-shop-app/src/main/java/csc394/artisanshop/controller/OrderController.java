@@ -1,14 +1,15 @@
 package csc394.artisanshop.controller;
 
+import csc394.artisanshop.entities.Item;
 import csc394.artisanshop.entities.Order;
 import csc394.artisanshop.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.UUID;
 
 @RequestMapping("/orders")
 @RestController
@@ -21,8 +22,14 @@ public class OrderController {
     }
 
     @PostMapping("/buy")
-    public ResponseEntity<Order> placeOrder(@RequestBody Order order) {
-        Order placedOrder = orderService.placeOrder(order);
-        return new ResponseEntity<>(placedOrder, HttpStatus.CREATED);
+    public ResponseEntity<Order> placeOrder(@RequestParam UUID userId, @RequestParam Long shopId, @RequestBody List<Item> items) {
+        Order placedOrder = orderService.placeOrder(userId, shopId, items);
+        if (placedOrder != null) {
+            return new ResponseEntity<>(placedOrder, HttpStatus.CREATED);
+        } else {
+            // Return an appropriate error message if the order couldn't be placed
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
+
 }

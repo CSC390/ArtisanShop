@@ -29,6 +29,6 @@ public class UserDto {
     @Column
     private String lastName;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<OrderDto> orders;
 }

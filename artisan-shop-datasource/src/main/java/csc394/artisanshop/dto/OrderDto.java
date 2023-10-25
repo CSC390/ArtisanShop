@@ -22,13 +22,14 @@ public class OrderDto {
     @Column(nullable = false)
     private Date orderDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "user_id")
     private UserDto user;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemDto> items = new ArrayList<>();
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<OrderDto> orders;
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    private SellerDto seller;
 }
