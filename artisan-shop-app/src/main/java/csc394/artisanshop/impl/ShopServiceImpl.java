@@ -120,6 +120,8 @@ public class ShopServiceImpl implements ShopService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    @Transactional
     public Product updateItem(Long itemId, Product product) {
         Optional<ProductDto> existingItemOpt = productDtoRepository.findById(itemId);
 
@@ -140,7 +142,8 @@ public class ShopServiceImpl implements ShopService {
         if (product.getQuantity() != null) {
             existingItem.setQuantity(product.getQuantity());
         }
-         productDtoRepository.save(existingItem);
-        return ProductMapper.toProduct(existingItem);
+        ProductDto updatedProductDto = productDtoRepository.save(existingItem);
+        entityManager.flush();
+        return ProductMapper.toProduct(updatedProductDto);
     }
 }
