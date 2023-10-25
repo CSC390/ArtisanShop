@@ -9,3 +9,8 @@ export const axiosCategories = axios.create({
 export const axiosProducts = axios.create({
     baseURL: "http://localhost:8080/api/products/",
 });
+
+// Axios instance with baseURL for S3 upload
+export const axiosUpload = axios.create({
+    baseURL: "http://localhost:8080/api/",
+});
