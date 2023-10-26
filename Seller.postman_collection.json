@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "21e23483-cce2-4096-ac81-43d683a31b6f",
+		"name": "Seller",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26150224"
+	},
+	"item": [
+		{
+			"name": "register shop",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sellerName\": \"BlueFrogs\",\n    \"sellerEmail\": \"blue@frogs.com\",\n    \"firstName\": \"Blue\",\n    \"lastName\": \"Frogs\",\n    \"phoneNumber\": \"333-111-1234\",\n    \"address\": \"some street address 99\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/seller/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updates seller info",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"sellerName\": \"BlueFrogsLLC\",\n    \"sellerEmail\": \"blue@frogs.com\",\n    \"firstName\": \"Blue\",\n    \"lastName\": \"Frogs\",\n    \"phoneNumber\": \"333-111-1234\",\n    \"address\": \"some street address 99\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/seller/update/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller",
+						"update",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get shop details",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/seller/BlueFrogsLLC",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller",
+						"BlueFrogsLLC"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update items for sale",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productName\": \"Gucci\",\n    \"productDetails\": \"An overpriced but nice smelling perfume\",\n    \"productBrand\": \"Gucci\",\n    \"productPrice\": 50.99,\n    \"quantity\": 10,\n    \"productCategory\":\n        {\n            \"categoryName\": \"personal Care\"\n        },\n  \"images\": [\n        {\n            \"url\": \"https://www.pexels.com/photo/close-up-on-pink-perfume-9957552/\",\n            \"description\": \"Perfume bottle\"\n        },\n        {\n            \"url\": \"https://www.pexels.com/photo/assorted-dolce-gabbana-fragrance-bottles-965990/\",\n            \"description\": \"Perfume bottle other view\"\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/products/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"products",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add item for sale",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"productName\": \"Prada\",\n    \"productDetails\": \"An overpriced but nice smelling perfume\",\n    \"productBrand\": \"Prada\",\n    \"productPrice\": 250.99,\n    \"quantity\": 10,\n    \"productCategory\":\n        {\n            \"categoryName\": \"personal Care\"\n        },\n  \"images\": [\n        {\n            \"url\": \"https://www.pexels.com/photo/close-up-on-pink-perfume-9957552/\",\n            \"description\": \"Perfume bottle\"\n        },\n        {\n            \"url\": \"https://www.pexels.com/photo/assorted-dolce-gabbana-fragrance-bottles-965990/\",\n            \"description\": \"Perfume bottle other view\"\n        }\n    ]\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/seller/1/addItem",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller",
+						"1",
+						"addItem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "remove a listing",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"itemName\": \"Perfume\",\n    \"description\": \"Gucci1\",\n    \"price\": 150.99,\n    \"quantity\": 10,\n    \"itemCategory\": {\n        \"categoryName\": \"Personal Care\"\n    },\n    \"imageUrls\": [\n        {\n            \"url\": \"https://www.pexels.com/photo/close-up-on-pink-perfume-9957552/\",\n            \"description\": \"Front view of the vase\"\n        },\n        {\n            \"url\": \"https://www.pexels.com/photo/assorted-dolce-gabbana-fragrance-bottles-965990/\",\n            \"description\": \"Side view of the vase\"\n        }\n    ]\n}\n\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/seller/1/removeItem/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller",
+						"1",
+						"removeItem",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET all items for sale",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/seller/1/items",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"seller",
+						"1",
+						"items"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
