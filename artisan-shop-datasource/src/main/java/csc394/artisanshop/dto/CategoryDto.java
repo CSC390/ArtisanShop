@@ -1,5 +1,6 @@
 package csc394.artisanshop.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,8 @@ public class CategoryDto {
     private String categoryName;
 
     @OneToMany(mappedBy = "categoryDto")
-    @JsonManagedReference
+    @JsonIgnore
+
     private List<ProductDto> items = new ArrayList<>();
 
 }
