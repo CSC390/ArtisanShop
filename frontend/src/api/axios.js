@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Axios instance with baseURL for categories
 export const axiosCategories = axios.create({
-    baseURL: "http://localhost:8080/api/categorys/",
+    baseURL: "http://localhost:8080/categorys/",
 });
 
 // Axios instance with baseURL for products

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { STATUS } from "../utils/status";
-const BASE_URL = '/api/';
+import { axiosCategories } from "../api/axios";
 
 const initialState = {
     categories: [],
@@ -45,9 +45,8 @@ const categorySlice = createSlice({
 
 // Return the categories in the DB.
 export const fetchAsyncCategories = createAsyncThunk('categories/fetch', async () => {
-    const response = await fetch(`${BASE_URL}categorys/getCategories`);
-    const data = await response.json();
-
+    const response = await axiosCategories.get('getCategoriesList');
+    const data = await response.data;
     // Limit the result to, for example, the first 5 categories
     // const limitedData = data.slice(0, 12); // Adjust the range as needed
 

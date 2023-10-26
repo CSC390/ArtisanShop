@@ -53,7 +53,7 @@ const Categories = () => {
                     href={`category/${category}`}
                     onClick={() => dispatch(setSidebarOff())}
                   >
-                    {category.replace("-", " ")}
+                    {category.replace(/-/g, " ")}
                   </ListGroup.Item>
                 );
               })}
