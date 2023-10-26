@@ -54,4 +54,7 @@ public class ProductDto {
             this.images = images;
         }
     }
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private OrderDto order;
 }
