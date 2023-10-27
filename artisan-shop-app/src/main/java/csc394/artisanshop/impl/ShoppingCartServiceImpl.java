@@ -40,7 +40,6 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
             cartDto = shoppingCartRepository.save(cartDto);
             return ShoppingCartMapper.toShoppingCart(cartDto);
         }
-
         throw new IllegalArgumentException("Item with ID: " + itemId + " not found");
     }
 
@@ -62,19 +61,12 @@ public class ShoppingCartServiceImpl implements ShoppingCartService {
         if (cartDtoOptional.isPresent()) {
             return ShoppingCartMapper.toShoppingCart(cartDtoOptional.get());
         }
-
-        // If no cart is found, create a new ShoppingCartDto, associate it with the user,
-        // save it to the repository, and return the new ShoppingCart
         ShoppingCartDto newCartDto = new ShoppingCartDto();
         UserDto userDto = new UserDto();
-        userDto.setUserId(userId);  // Assuming setUserId is the correct method to set the user ID
+        userDto.setUserId(userId);
         newCartDto.setUser(userDto);
         ShoppingCart newCart = ShoppingCartMapper.toShoppingCart(newCartDto);
-
-        // Assuming ShoppingCartRepository has a save method that accepts a ShoppingCartDto
-        // and assuming UserDto and ShoppingCartDto have the necessary setters for this operation.
         newCartDto = shoppingCartRepository.save(newCartDto);
-
         return ShoppingCartMapper.toShoppingCart(newCartDto);
     }
 
