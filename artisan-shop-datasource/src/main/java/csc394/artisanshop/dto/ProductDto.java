@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDto {
+public class ProductDto extends CartItemDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
