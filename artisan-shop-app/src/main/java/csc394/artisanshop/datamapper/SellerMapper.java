@@ -11,7 +11,7 @@ public class SellerMapper {
         }
 
         SellerDto sellerDto = new SellerDto();
-        sellerDto.setId(seller.getSellerId());
+        sellerDto.setSellerId(seller.getSellerId());
         sellerDto.setSellerEmail(seller.getSellerEmail());
         sellerDto.setFirstName(seller.getFirstName());
         sellerDto.setLastName(seller.getLastName());
@@ -28,7 +28,7 @@ public class SellerMapper {
         }
 
         Seller seller = new Seller();
-        seller.setSellerId(sellerDto.getId());
+        seller.setSellerId(sellerDto.getSellerId());
         seller.setSellerEmail(sellerDto.getSellerEmail());
         seller.setSellerName(sellerDto.getSellerName());
         seller.setFirstName(sellerDto.getFirstName());

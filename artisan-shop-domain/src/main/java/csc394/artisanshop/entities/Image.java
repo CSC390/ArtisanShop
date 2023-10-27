@@ -12,6 +12,6 @@ import lombok.NoArgsConstructor;
 @EqualsAndHashCode
 public class Image {
     private String url;
-    private Long id;
+    private Long imageId;
     private String description;
 }

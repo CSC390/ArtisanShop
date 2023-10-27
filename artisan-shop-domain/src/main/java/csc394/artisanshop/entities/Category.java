@@ -10,6 +10,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @EqualsAndHashCode
 public class Category {
-    private Long id;
+    private Long categoryId;
     private String categoryName;
 }

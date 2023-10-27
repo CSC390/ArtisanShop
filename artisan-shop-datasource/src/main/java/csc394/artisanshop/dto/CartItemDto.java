@@ -5,18 +5,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
-@Table(name = "cart_item")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "cart_item")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class CartItemDto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "product_id")
     private ProductDto product;
 

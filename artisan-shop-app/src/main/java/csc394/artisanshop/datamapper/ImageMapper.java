@@ -9,7 +9,7 @@ public class ImageMapper {
             return null;
         }
         ImageDto dto = new ImageDto();
-        dto.setId(image.getId());
+        dto.setId(image.getImageId());
         dto.setImages(image.getUrl());
         dto.setDescription(image.getDescription());
         return dto;
@@ -20,7 +20,7 @@ public class ImageMapper {
             return null;
         }
         Image image = new Image();
-        image.setId(dto.getId());
+        image.setImageId(dto.getId());
         image.setUrl(dto.getImages());
         image.setDescription(dto.getDescription());
         return image;

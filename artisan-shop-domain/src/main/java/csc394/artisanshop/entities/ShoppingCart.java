@@ -13,7 +13,7 @@ import java.util.List;
 @EqualsAndHashCode
 public class ShoppingCart {
 
-    private Long id;
+    private Long cartId;
 
     private Long userId;
 

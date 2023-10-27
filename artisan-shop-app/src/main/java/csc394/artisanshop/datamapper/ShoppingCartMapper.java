@@ -15,7 +15,7 @@ public class ShoppingCartMapper {
             return null;
         }
         ShoppingCartDto shoppingCartDto = new ShoppingCartDto();
-        shoppingCartDto.setId(shoppingCart.getId());
+        shoppingCartDto.setId(shoppingCart.getCartId());
         shoppingCartDto.setUser(UserMapper.toUserDto(shoppingCart.getUser()));
 
         List<CartItemDto> cartItemDtos = shoppingCart.getItems().stream()
@@ -32,7 +32,7 @@ public class ShoppingCartMapper {
         }
 
         CartItemDto cartItemDto = new CartItemDto();
-        cartItemDto.setId(cartItem.getId());
+        cartItemDto.setId(cartItem.getCartItemId());
         cartItemDto.setProduct(ProductMapper.toProductDto(cartItem.getProduct()));
         cartItemDto.setQuantity(cartItem.getQuantity());
 
@@ -45,7 +45,7 @@ public class ShoppingCartMapper {
         }
 
         ShoppingCart shoppingCart = new ShoppingCart();
-        shoppingCart.setId(shoppingCartDto.getId());
+        shoppingCart.setCartId(shoppingCartDto.getId());
         shoppingCart.setUser(UserMapper.toUser(shoppingCartDto.getUser()));
 
         List<CartItem> cartItems = shoppingCartDto.getItems().stream()
@@ -62,7 +62,7 @@ public class ShoppingCartMapper {
         }
 
         CartItem cartItem = new CartItem();
-        cartItem.setId(cartItemDto.getId());
+        cartItem.setCartItemId(cartItemDto.getId());
         cartItem.setProduct(ProductMapper.toProduct(cartItemDto.getProduct()));
         cartItem.setQuantity(cartItemDto.getQuantity());
 
