@@ -8,13 +8,13 @@ import csc394.artisanshop.entities.User;
 import csc394.artisanshop.services.OrderService;
 import csc394.artisanshop.services.ShoppingCartService;
 import csc394.artisanshop.services.UserService;
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
@@ -58,11 +58,19 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    @Getter
+    public class ProductWrapper {
+        private List<Product> items;
+
+
+        // Getters and setters
+    }
     @PostMapping("/placeOrder")
-    public ResponseEntity<Order> placeOrder(@RequestParam UUID userId,
-                                            @RequestParam Long shopId,
-                                            @RequestBody List<Product> items) {
-        Order placedOrder = orderService.placeOrder(userId, shopId, items);
+    public ResponseEntity<Order> placeOrder(@RequestParam Long userId,
+                                            @RequestParam Long sellerId,
+                                            @RequestBody  ProductWrapper productWrapper) {
+        List<Product> items = productWrapper.getItems();
+        Order placedOrder = orderService.placeOrder(userId, sellerId, items);
         if (placedOrder != null) {
             return new ResponseEntity<>(placedOrder, HttpStatus.CREATED);
         } else {
@@ -75,13 +83,6 @@ public class UserController {
         private Long userId;
         @JsonProperty("itemId")
         private Long itemId;
-        @Override
-        public String toString() {
-            return "CartActionRequest{" +
-                    "userId=" + userId +
-                    ", itemId=" + itemId +
-                    '}';
-        }
     }
 
     @PostMapping("/addItemToCart")
@@ -97,18 +98,6 @@ public class UserController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-//TODO: PRINT OUT
-//    @PostMapping("/addItemToCart")
-//    public ResponseEntity<ShoppingCart> addItemToCart(@RequestBody CartActionRequest cartRequest) {
-//        System.out.println(cartRequest);  // log request body
-//        ShoppingCart updatedCart = shoppingCartService.addCartItem(cartRequest.userId, cartRequest.itemId);
-//        if (updatedCart != null) {
-//            return new ResponseEntity<>(updatedCart, HttpStatus.OK);
-//        } else {
-//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
-
 
     @DeleteMapping("/{userId}/removeItemFromCart/{productId}")
     public ResponseEntity<Void> removeItemFromCart(@RequestBody CartActionRequest cartRequest) {

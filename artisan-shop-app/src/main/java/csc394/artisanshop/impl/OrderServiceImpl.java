@@ -41,7 +41,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public Order placeOrder(UUID userId, Long shopId, List<Product> items) {
+    public Order placeOrder(Long userId, Long shopId, List<Product> items) {
         List<ProductDto> itemDtos = items.stream()
                 .map(ProductMapper::toProductDto)
                 .collect(Collectors.toList());

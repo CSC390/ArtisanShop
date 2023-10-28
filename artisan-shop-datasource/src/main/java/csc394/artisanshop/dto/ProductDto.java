@@ -37,7 +37,7 @@ public class ProductDto extends CartItemDto {
     @Column
     private Double productPrice;
 
-    @Column
+    @Column(name = "quantity")
     private Integer quantity;
 
     @ManyToOne(cascade = CascadeType.ALL)

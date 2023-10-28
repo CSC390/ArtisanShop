@@ -14,13 +14,6 @@ public class CartItemMapper {
         return cartItemDto;
     }
 
-//    public static Product toProduct(CartItemDto cartItemDto) {
-//        if (cartItemDto == null) {
-//            return null;
-//        }
-//        return ProductMapper.toProduct(cartItemDto.getProduct());
-//    }
-
     public static CartItem toProduct(CartItemDto cartItemDto) {
         if (cartItemDto == null) {
             return null;

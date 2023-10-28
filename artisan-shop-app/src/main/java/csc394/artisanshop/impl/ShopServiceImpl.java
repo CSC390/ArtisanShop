@@ -133,9 +133,14 @@ public class ShopServiceImpl implements ShopService {
     @Transactional
     public List<Product> getSellerItems(Long sellerId) {
         List<ProductDto> productDtos = productDtoRepository.findBySellerDto_sellerId(sellerId);
+        productDtos.forEach(dto -> System.out.println("Quantity: " + dto.getQuantity()));
         return productDtos.stream()
                 .map(ProductMapper::toProduct)
                 .collect(Collectors.toList());
+//        List<ProductDto> productDtos = productDtoRepository.findBySellerDto_sellerId(sellerId);
+//        return productDtos.stream()
+//                .map(ProductMapper::toProduct)
+//                .collect(Collectors.toList());
     }
 
     @Override
