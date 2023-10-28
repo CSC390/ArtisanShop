@@ -1,5 +1,6 @@
 package csc394.artisanshop.controller;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import csc394.artisanshop.entities.Order;
 import csc394.artisanshop.entities.Product;
 import csc394.artisanshop.entities.ShoppingCart;
@@ -70,12 +71,25 @@ public class UserController {
     }
 
     public static class CartActionRequest {
+        @JsonProperty("userId")
         private Long userId;
+        @JsonProperty("itemId")
         private Long itemId;
+        @Override
+        public String toString() {
+            return "CartActionRequest{" +
+                    "userId=" + userId +
+                    ", itemId=" + itemId +
+                    '}';
+        }
     }
 
     @PostMapping("/addItemToCart")
     public ResponseEntity<ShoppingCart> addItemToCart(@RequestBody CartActionRequest cartRequest) {
+        System.out.println("UserId: " + cartRequest.userId);
+        System.out.println("ItemId: " + cartRequest.itemId);
+        System.out.println(cartRequest);
+
         ShoppingCart updatedCart = shoppingCartService.addCartItem(cartRequest.userId, cartRequest.itemId);
         if (updatedCart != null) {
             return new ResponseEntity<>(updatedCart, HttpStatus.OK);
@@ -83,6 +97,18 @@ public class UserController {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+//TODO: PRINT OUT
+//    @PostMapping("/addItemToCart")
+//    public ResponseEntity<ShoppingCart> addItemToCart(@RequestBody CartActionRequest cartRequest) {
+//        System.out.println(cartRequest);  // log request body
+//        ShoppingCart updatedCart = shoppingCartService.addCartItem(cartRequest.userId, cartRequest.itemId);
+//        if (updatedCart != null) {
+//            return new ResponseEntity<>(updatedCart, HttpStatus.OK);
+//        } else {
+//            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+//        }
+//    }
+
 
     @DeleteMapping("/{userId}/removeItemFromCart/{productId}")
     public ResponseEntity<Void> removeItemFromCart(@RequestBody CartActionRequest cartRequest) {

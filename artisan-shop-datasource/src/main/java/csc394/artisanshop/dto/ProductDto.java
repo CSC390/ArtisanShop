@@ -57,4 +57,7 @@ public class ProductDto extends CartItemDto {
     @ManyToOne
     @JoinColumn(name = "order_id")
     private OrderDto order;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItemDto> cartItems = new ArrayList<>();
 }

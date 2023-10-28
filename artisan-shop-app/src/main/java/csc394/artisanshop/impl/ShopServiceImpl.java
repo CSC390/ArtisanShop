@@ -111,35 +111,22 @@ public class ShopServiceImpl implements ShopService {
 
 
         CartItemDto savedCartItemDto = cartItemDtoRepository.save(cartItemDto);
-        return CartItemMapper.toProduct(savedCartItemDto);
-
-//        Optional<SellerDto> sellerDtoOptional = sellerDtoRepository.findBySellerId((sellerId));
-//        if (!sellerDtoOptional.isPresent()) {
-//            throw new IllegalArgumentException("Seller with ID: " + sellerId + " not found");
-//        }
-//        SellerDto sellerDto = sellerDtoOptional.get();
-//        ProductDto productDto = ProductMapper.toProductDto(product);
-//        productDto.setSellerDto(sellerDto);
-//
-//        if (productDto.getImages() != null) {
-//            for (ImageDto imageDto : productDto.getImages()) {
-//                imageDto.setProduct(productDto);
-//            }
-//        }
-//
-//        ProductDto savedProductDto = productDtoRepository.save(productDto);
-//        return ProductMapper.toProduct(savedProductDto);
+        return CartItemMapper.toProduct(savedCartItemDto).getProduct();
     }
 
 
     @Override
     @Transactional
     public void removeItem(Long sellerId, Long itemId) {
-        Optional<ProductDto> itemDtoOptional = productDtoRepository.findById(itemId);
-        if (!itemDtoOptional.isPresent() || !itemDtoOptional.get().getSellerDto().getSellerId().equals(sellerId)) {
-            throw new IllegalArgumentException("Item with ID: " + itemId + " not found or doesn't belong to the seller with ID: " + sellerId);
+        Optional<ProductDto> productDtoOptional = productDtoRepository.findById(itemId);
+        if (productDtoOptional.isPresent()) {
+            ProductDto productDto = productDtoOptional.get();
+            List<CartItemDto> cartItems = productDto.getCartItems();
+            cartItemDtoRepository.deleteAll(cartItems);
+            productDtoRepository.delete(productDto);
+        } else {
+            throw new IllegalArgumentException("Product with ID: " + itemId + " not found");
         }
-        productDtoRepository.deleteById(itemId);
     }
 
     @Override

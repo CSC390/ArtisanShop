@@ -17,13 +17,17 @@ public class CartItemDto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id")
-    private ProductDto product;
+//    @ManyToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "product_id")
+//    private ProductDto product;
 
     @ManyToOne
     @JoinColumn(name = "cart_id")
     private ShoppingCartDto shoppingCart;
 
     private Integer quantity;
+
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private ProductDto product;
 }

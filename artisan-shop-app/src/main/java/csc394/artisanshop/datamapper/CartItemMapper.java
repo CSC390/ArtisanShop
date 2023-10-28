@@ -2,7 +2,6 @@ package csc394.artisanshop.datamapper;
 
 import csc394.artisanshop.dto.CartItemDto;
 import csc394.artisanshop.entities.CartItem;
-import csc394.artisanshop.entities.Product;
 
 public class CartItemMapper {
     public static CartItemDto toCartItemDto(CartItem cartItem) {
@@ -15,10 +14,20 @@ public class CartItemMapper {
         return cartItemDto;
     }
 
-    public static Product toProduct(CartItemDto cartItemDto) {
+//    public static Product toProduct(CartItemDto cartItemDto) {
+//        if (cartItemDto == null) {
+//            return null;
+//        }
+//        return ProductMapper.toProduct(cartItemDto.getProduct());
+//    }
+
+    public static CartItem toProduct(CartItemDto cartItemDto) {
         if (cartItemDto == null) {
             return null;
         }
-        return ProductMapper.toProduct(cartItemDto.getProduct());
+        CartItem cartItem = new CartItem();
+        cartItem.setProduct(ProductMapper.toProduct(cartItemDto.getProduct()));
+        cartItem.setQuantity(cartItemDto.getQuantity());
+        return cartItem;
     }
 }
