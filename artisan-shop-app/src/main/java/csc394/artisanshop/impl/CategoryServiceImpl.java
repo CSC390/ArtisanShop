@@ -33,9 +33,9 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDto getAll() {
-        return this.categoryDtoRepository.findAll();
+        return (CategoryDto) this.categoryDtoRepository.findAll();
     }
-
+/////////////////////////
     @Override
     public CategoryDto findCategoryById(Long categoryId) {
         Optional<CategoryDto> categoryDtoOptional = categoryDtoRepository.findById(categoryId);
