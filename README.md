@@ -31,7 +31,7 @@ npm run dev
 run the main function in Artisan-shop-app>src>main>java/csc394/artisanshop>ArtisanShopApplication.java 
 
 ```
-## 🏃 Accessing Database
+## 💽 Accessing Database
 
 ```
 
