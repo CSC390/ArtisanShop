@@ -87,10 +87,7 @@ public class UserController {
 
     @PostMapping("/addItemToCart")
     public ResponseEntity<ShoppingCart> addItemToCart(@RequestBody CartActionRequest cartRequest) {
-        System.out.println("UserId: " + cartRequest.userId);
-        System.out.println("ItemId: " + cartRequest.itemId);
-        System.out.println(cartRequest);
-
+    
         ShoppingCart updatedCart = shoppingCartService.addCartItem(cartRequest.userId, cartRequest.itemId);
         if (updatedCart != null) {
             return new ResponseEntity<>(updatedCart, HttpStatus.OK);
