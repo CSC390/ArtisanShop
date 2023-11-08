@@ -15,7 +15,7 @@ public class ProductMapper {
             return null;
         }
         ProductDto productDto = new ProductDto();
-        productDto.setId(product.getId());
+        productDto.setId(product.getProductId());
         productDto.setProductDetails(product.getProductDetails());
         productDto.setProductName(product.getProductName());
         productDto.setProductPrice(product.getProductPrice());
@@ -40,7 +40,7 @@ public class ProductMapper {
         }
 
         Product product = new Product();
-        product.setId(productDto.getId());
+        product.setProductId(productDto.getId());
         product.setProductName(productDto.getProductName());
         product.setProductDetails(productDto.getProductDetails());
         product.setProductPrice(productDto.getProductPrice());

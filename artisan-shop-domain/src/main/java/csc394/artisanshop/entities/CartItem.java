@@ -9,7 +9,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @EqualsAndHashCode
-public class Category {
-    private Long categoryId;
-    private String categoryName;
+public class CartItem {
+    private Long cartItemId;
+    private Long productId;
+    private Integer quantity;
+    private Product product;
 }

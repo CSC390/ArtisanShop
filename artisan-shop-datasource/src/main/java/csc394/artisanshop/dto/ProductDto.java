@@ -16,7 +16,7 @@ import java.util.List;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProductDto {
+public class ProductDto extends CartItemDto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -37,7 +37,7 @@ public class ProductDto {
     @Column
     private Double productPrice;
 
-    @Column
+    @Column(name = "quantity")
     private Integer quantity;
 
     @ManyToOne(cascade = CascadeType.ALL)
@@ -54,4 +54,10 @@ public class ProductDto {
             this.images = images;
         }
     }
+    @ManyToOne
+    @JoinColumn(name = "order_id")
+    private OrderDto order;
+
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<CartItemDto> cartItems = new ArrayList<>();
 }
