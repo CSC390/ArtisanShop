@@ -28,5 +28,14 @@ cd Frontend
 npm run dev
 
 # Run Backend Only
+run the main function in Artisan-shop-app>src>main>java/csc394/artisanshop>ArtisanShopApplication.java 
+
+```
+## 💽 Accessing Database
+
+```
+
+# H2 Database
+run the backend, and use browser to access http://localhost:8080/h2-console
 
 ```
