@@ -25,4 +25,10 @@ public class Product {
     public Long getId() {
         return this.productId;
     }
+
+    public Product(String string, double d, String string2) {
+        this.productName = string;
+        this.productPrice = d;
+        this.productDetails = string2;
+    }
 }

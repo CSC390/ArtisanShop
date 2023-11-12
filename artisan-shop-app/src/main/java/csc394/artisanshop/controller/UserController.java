@@ -59,11 +59,13 @@ public class UserController {
         }
     }
     @Getter
-    public class ProductWrapper {
+    public static class ProductWrapper {
         private List<Product> items;
 
+        public void setItems(List<Product> products) {
+            this.items = products;
+        }
 
-        // Getters and setters
     }
     @PostMapping("/placeOrder")
     public ResponseEntity<Order> placeOrder(@RequestParam Long userId,
